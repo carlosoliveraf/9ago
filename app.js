@@ -211,16 +211,25 @@ app.delete('/characters/:id', function (req, res) {
 	// res.json(itens);
 });
 
-
-app.put('/characters/:id', function (req, res) {
-		
-	var character = req.body;
-	characterController.update(id, character, function(resp){
+app.put('/characters', function (req, res) {
+	
+	//var id = req.param('_id');
+	var charEdit = req.body;
+	charController.update(charEdit, function(resp){
 		res.json(resp);
 
 	});
 
 });
+
+// app.put('/characters/:id', function (req, res) {
+		
+// 	var character = req.body;
+// 	characterController.update(id, character, function(resp){
+// 		res.json(resp);
+// 	});
+
+// });
 
 //teste charac
 

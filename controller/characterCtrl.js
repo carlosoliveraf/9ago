@@ -46,6 +46,35 @@ exports.save = function(character, callback){
 };
 
 
+exports.update = function(charEdit, callback) {
+
+	db.Character.findById(charEdit._id, function(error, character) {
+		
+		if(charEdit.name)
+		character.name = charEdit.name;
+		if(charEdit.vocation)
+		character.vocation = charEdit.vocation;
+		if(charEdit.level)
+		character.level = charEdit.level;
+		if(charEdit.stamina)
+		character.stamina = charEdit.stamina;
+		if(charEdit.balance)
+		character.balance = charEdit.balance;
+		if(charEdit.owner)
+		character.owner = charEdit.owner;
+
+
+		character.save(function(error, character) {
+
+			if(error) {
+				callback({error: 'Não foi possivel salvar o character'});
+			} else {
+				callback(character);
+			}
+		});
+	});
+};
+
 exports.update = function(id, characterParam, callback) {
 
 	db.Character.findById(id, function(error, character) {
