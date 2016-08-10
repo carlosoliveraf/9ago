@@ -235,7 +235,8 @@ app.get('/charac', function (req, res) {
 
 app.delete('/user/:id', function (req, res) {
 
-
+	var id = req.param('_id');
+	
 		userController.delete(id, function(resp){
 			res.json(resp);
 
