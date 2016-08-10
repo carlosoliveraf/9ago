@@ -14,7 +14,6 @@ exports.list = function(callback){
 	});
 };
 
-
 exports.user = function(id, callback) {
 
 	db.User.findById(id, function(error, user) {
@@ -29,9 +28,6 @@ exports.user = function(id, callback) {
 	});
 };
 
-
-
-
 exports.save = function(user, callback){
 
 	new db.User(user).save(function(error, user) {
@@ -45,7 +41,6 @@ exports.save = function(user, callback){
 		}
 	});
 };
-
 
 exports.update = function(userEdit, callback) {
 
@@ -69,7 +64,6 @@ exports.update = function(userEdit, callback) {
 		});
 	});
 };
-
 
 exports.delete = function(id, callback) {
 

@@ -187,8 +187,7 @@ app.post('/characters', function (req, res) {
 
 app.put('/users', function (req, res) {
 	
-	var id = req.param('_id');
-	console.log(req.body);
+	//var id = req.param('_id');
 	var userEdit = req.body;
 	userController.update(userEdit, function(resp){
 		res.json(resp);
@@ -232,6 +231,23 @@ app.get('/charac', function (req, res) {
 	});
 
 });
+
+
+app.delete('/user/:id', function (req, res) {
+
+	var id = req.param('id');
+	
+		userController.delete(id, function(resp){
+			res.json(resp);
+
+		});
+
+
+	//res.status(500).end();
+	// res.json(itens);
+});
+
+
 
 // app.post('/charac', function (req, res) {
 
