@@ -233,7 +233,7 @@ app.get('/charac', function (req, res) {
 });
 
 
-app.delete('/user/:id', function (req, res) {
+app.delete('/users/:id', function (req, res) {
 
 	var id = req.param('_id');
 	
