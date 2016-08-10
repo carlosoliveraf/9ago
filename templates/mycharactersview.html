@@ -1,0 +1,37 @@
+<div style="width: 50%; display: table; margin: auto; margin-top: 2%">
+	<h4>Character Data:</h4>
+
+	<select ng-model="character" style="margin: 2%; background-color: #ffffff; width: 35%;" class="form-control" name="vocation" ng-options="character.name for character in characters">
+		<option value="">Select the character</option>
+	</select>
+	<table class="table" style="width: 95%; margin: 2%; table-layout: fixed;
+  border-collapse: collapse;" ng-if="character">
+		<tr>
+			<th ng-click="setOrder('name')">Name</th>
+			<th ng-click="setOrder('level')">Level</th>
+			<th ng-click="setOrder('vocation')">Vocation</th>
+			<th ng-click="setOrder('stamina')">Stamina</th>
+
+			<th></th>
+		</tr>
+	<!-- 	<tr ng-repeat="character in characters | orderBy: field : direction"> -->
+		<tr>
+			<td ng-if="!edition">{{character.name}}</td>
+			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.name" name="name" placeholder="Name" ng-required="true"/></td>
+			<td ng-if="!edition">{{character.level}}</td>
+			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.level" name="level" placeholder="Level" ng-required="true"/></td>
+			<td ng-if="!edition">{{character.vocation}}</td>
+			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.vocation" name="vocation" placeholder="Vocation" ng-required="true"/></td>
+			<td ng-if="!edition">{{character.stamina}}</td>
+			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.stamina" name="stamina" placeholder="Stamina" ng-required="true"/></td>
+
+			<td>
+			<button class="btn btn-info btn-sm" ng-click="editCharacter(character)">Edit</button>
+			<button class="btn btn-danger btn-sm" ng-click="eraseCharacter(character)">Delete</button></td>
+		</tr>
+	</table>
+				<button class="btn btn-default btn-sm" ng-click="updateCharacter(character)">Save Changes</button>
+
+
+<br/>
+</div>

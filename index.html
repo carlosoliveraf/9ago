@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta name="name" content="something" charset="UTF-8">
+    
+    <title></title>
+        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
+        .marginPerson {
+          margin-right: 0.6%;
+        }
+        </style>
+</head>
+<body background="clientside/img/wall.jpg" style="background-repeat:no-repeat; background-size:cover;">
+    
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="clientside/app.js"></script>
+    <script src="clientside/routes/routes.js"></script>
+    <script src="clientside/controllers/indexCtrl.js"></script>
+    <script src="clientside/controllers/loginCtrl.js"></script>
+    <script src="clientside/controllers/signinCtrl.js"></script>
+    <script src="clientside/controllers/characterCtrl.js"></script>
+    <script src="clientside/controllers/huntingplacesCtrl.js"></script>
+    <script src="clientside/controllers/aboutmeCtrl.js"></script>
+    <script src="clientside/controllers/404errorCtrl.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
+  <!--   <section ng-view=""></section> -->
+  
+	<div id="title" style="width: 100%">
+  <div style="text-align: center; margin-top: 3%"><p style="font-family: 'Courier New', Courier, monospace; font-size: 25px"><strong>Tibia Character Monitor</strong></p></div>
+
+	</div>
+
+    
+    
+    <div id="menu" ng-if="menu">
+      <ul style="color: white; padding: 1%" class="nav nav-tabs">
+        <li class="marginPerson">
+          <div class="dropdown"><a href="#/home" class="btn btn-default btn-sm">Home</a>
+          </div>
+        </li>
+        <li class="marginPerson">
+          <div class="dropdown">
+            <button class="btn btn-default btn-sm" type="button" data-toggle="dropdown">Characters
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#/mycharactersview">My Characters</a></li>
+              <li><a href="#/newcharactersview">New Character</a></li>
+              <li><a href="#/charactersstatsview">Characters Stats</a></li>
+            </ul>
+          </div>
+        </li>        
+
+        <li class="marginPerson">
+          <div class="dropdown">
+            <button class="btn btn-default btn-sm" type="button" data-toggle="dropdown">Hunting Places
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#/listplacesview">List Places</a></li>
+              <li><a href="#/newplaceview">New Place</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="marginPerson">
+          <div class="dropdown"><a href="#/readytohuntview" class="btn btn-default btn-sm">Ready to Hunt</a>
+          </div>
+        </li>
+         <li class="marginPerson">
+          <div class="dropdown"><a href="#/aboutmeview" class="btn btn-default btn-sm">About me</a>
+          </div>
+        </li>        
+        <div class="dropdown" style="position: fixed; margin-left: 85%">
+        <li  style="color: black">Welcome <strong>{{username}}!
+        <a style="color: black; text-decoration: underline;text-decoration: bold" href="#/" class="btn btn-sm">Logoff</a></strong>
+        </li></div>
+      </ul>
+    </div>
+    <div id="view" ng-view></div>
+</body>
+</html>
+
+
+
+
+
+	
+
+
+
+

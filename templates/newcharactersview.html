@@ -1,0 +1,32 @@
+
+<div style="width: 50%; display: table; margin: auto; margin-top: 2%">
+
+<form name="characterForm" novalidate>
+	<h4>Character Data:</h4>
+	<input type="text" style="margin: 2%; background-color: #ffffff; width: 45%; float: left;" class="form-control" ng-model="newcharacter.name" name="name" placeholder="Character Name" ng-required="true"/>
+	<select ng-model="newcharacter.vocation" style="margin: 2%; background-color: #ffffff; width: 45%; float: right;" class="form-control" name="vocation" ng-options="vocation for vocation in vocations">
+		<option value="">Select the vocation</option>
+	</select>
+
+	<input type="number" style="margin: 2%; background-color: #ffffff ; width: 45%; float: left;" class="form-control" ng-model="newcharacter.level" name="level" placeholder="Level" ng-required="true"/>
+	
+	<input type="text" style="margin: 2%; background-color: #ffffff; width: 45%; float: right;" class="form-control" ng-model="newcharacter.stamina" name="stamina" placeholder="Stamina" ng-required="true"/>
+
+	<div style="width: 100%; display: table">
+	<input type="number" style="margin: 2%; background-color: #ffffff ; width: 45%; float: left;" class="form-control" ng-model="newcharacter.balance" name="balance" placeholder="Bank Balance" ng-required="true"/></div>
+	<br/>
+<!-- 	<h4>Equipments:</h4>
+ -->
+	<!-- <input type="number" style="margin: 2%; background-color: #ffffff ; width: 45%; float: left;" class="form-control" ng-model="newcharacter.level" name="level" placeholder="Level" ng-required="true"/>
+	
+	<input type="text" style="margin: 2%; background-color: #ffffff; width: 45%; float: right;" class="form-control" ng-model="newcharacter.stamina" name="stamina" placeholder="Stamina" ng-required="true"/> -->
+
+
+	<div style="width: 60%; display: inline-block;">
+	<button ng-click="saveCharacter(newcharacter)" style="margin: 2%;" class="btn btn-success btn-sm" ng-disabled="characterForm.$invalid">Create Character</button>
+
+	<button ng-click="clearFields(newcharacter)" style="margin: 2%" class="btn btn-warning btn-sm">Clear Fields</button>
+	</div>
+</form>
+
+</div>
