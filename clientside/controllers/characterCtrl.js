@@ -3,7 +3,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.newCharacter = false;
 		$scope.charactersList = false;
 		$scope.charactersStats = false;
-		$scope.characters = [];
+		$scope.characters = [""];
 		$scope.edition = false;
 
 
@@ -18,31 +18,17 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 	        $scope.checkLogged();
 
 
-		$scope.vocations = [ 'Elite Knight', 'Royal Paladin', 'Master Sorcerer', 'Elder Druid'];
-
-		// $scope.characters = [ 
-		// 	{
-		// 		name: "Maggie Viz",
-		// 		level: 206,
-		// 		stamina: 42,
-		// 		vocation: "Master Sorcerer"
-		// 	},
-		// 	{
-		// 		name: "Olivera Rullezz",
-		// 		level: 225,
-		// 		stamina: 40,
-		// 		vocation: "Royal Paladin"
-
-		// 	}
-		// ];
-
+		$scope.vocations = [ 'Knight' ,'Elite Knight','Paladin' ,'Royal Paladin','Sorcerer' , 'Master Sorcerer','Druid', 'Elder Druid'];
 
 		$scope.findCharacters = function (character) {
-		//$http.get('http://localhost:5000/characters/').then(function (response) {
-		$http.get('https://lit-hamlet-34738.herokuapp.com/characters/').then(function (response) {
+		$http.get('http://localhost:5000/characters/').then(function (response) {
+		//$http.get('https://lit-hamlet-34738.herokuapp.com/characters/').then(function (response) {
 			//$scope.characters = response.data;
+			delete $scope.characters;
+			$scope.characters = [];
 			for(index in response.data){
 				if(response.data[index].owner == $rootScope.username){
+
 					$scope.characters.push(response.data[index]);
 				};
 			};
@@ -52,7 +38,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		$scope.findCharacters();
 
-
+		
 		
 
 		//https://blooming-headland-84997.herokuapp.com/characters/
@@ -67,21 +53,19 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			// delete character.armor;
 			
 			var characString = JSON.stringify(character);
-			console.log(character);
 
-			//var res = $http.post('http://localhost:5000/characters', character);
-			var res = $http.post('https://lit-hamlet-34738.herokuapp.com/characters', character);
+			var res = $http.post('http://localhost:5000/characters', character);
+			//var res = $http.post('https://lit-hamlet-34738.herokuapp.com/characters', character);
 
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
 			alert( "Character created!");
+			delete $scope.newcharacter;
 			});
 			res.error(function(data, status, headers, config) {
 			alert( "failure message: " + JSON.stringify({data: data}));
 			});		
-    		$scope.characters.push(character);
-    		$scope.newCharacter = false;
-			delete $scope.character;
+    		
 		};
 
 		$scope.editCharacter = function(character){
@@ -89,6 +73,16 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		};
 
 		$scope.updateCharacter = function(character){
+			var res = $http.put('http://localhost:5000/characters', character);
+			//var res = $http.put('https://lit-hamlet-34738.herokuapp.com/characters', character);
+
+			res.success(function(data, status, headers, config) {
+			$scope.message = data;
+			alert( "Character updated!");
+			});
+			res.error(function(data, status, headers, config) {
+			alert( "failure message: " + JSON.stringify({data: data}));
+			});		
 			$scope.edition = false;
 		}
 
@@ -96,16 +90,14 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		$scope.eraseCharacter = function (character) {
 			var id = character._id;
-			console.log(id);
-			//var res = $http.delete('http://localhost:5000/characters/'+id);
-			var res = $http.delete('https://lit-hamlet-34738.herokuapp.com/characters/'+id);
+			var res = $http.delete('http://localhost:5000/characters/'+id);
+			//var res = $http.delete('https://lit-hamlet-34738.herokuapp.com/characters/'+id);
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
 			var posicao = $scope.characters.indexOf(character);
 			$scope.characters.splice(posicao, 1);
+			alert( "Character removed!");
 
-
-			console.log($scope.characters);
 			});
 			res.error(function(data, status, headers, config) {
 			alert( "failure message: " + JSON.stringify({data: data}));

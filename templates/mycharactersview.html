@@ -1,18 +1,22 @@
-<div style="width: 50%; display: table; margin: auto; margin-top: 2%">
+<div style="width: 60%; display: table; margin: auto; margin-top: 2%">
 	<h4>Character Data:</h4>
 
-	<select ng-model="character" style="margin: 2%; background-color: #ffffff; width: 35%;" class="form-control" name="vocation" ng-options="character.name for character in characters">
+	<select ng-model="character" style="margin: 2%; background-color: #ffffff; width: 35%;" class="form-control" name="vocation" ng-options="character.name for character in characters" ng-disabled="edition">
 		<option value="">Select the character</option>
 	</select>
+	   <label style="color: red; font-size: 85%" ng-if="characters.length == 0">There is no characters in your account!</label><br/>
+	<div style="margin-top: 5%; border-style: solid;border-radius: 3%;;
+    border-width: 1px;
+    box-shadow: 10px 10px 5px #888888; height: 20%; display: table; padding-bottom: 5%" ng-if="character">
 	<table class="table" style="width: 95%; margin: 2%; table-layout: fixed;
-  border-collapse: collapse;" ng-if="character">
+  border-collapse: collapse;" >
 		<tr>
-			<th ng-click="setOrder('name')">Name</th>
-			<th ng-click="setOrder('level')">Level</th>
-			<th ng-click="setOrder('vocation')">Vocation</th>
-			<th ng-click="setOrder('stamina')">Stamina</th>
+			<th ng-click="setOrder('name')" style="width: 16%">Name</th>
+			<th ng-click="setOrder('level')" style="width: 10%">Level</th>
+			<th ng-click="setOrder('vocation')" style="width: 13%">Vocation</th>
+			<th ng-click="setOrder('stamina')" style="width: 10%">Stamina</th>
 
-			<th></th>
+			<th style="width: 20%"></th>
 		</tr>
 	<!-- 	<tr ng-repeat="character in characters | orderBy: field : direction"> -->
 		<tr>
@@ -26,11 +30,12 @@
 			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.stamina" name="stamina" placeholder="Stamina" ng-required="true"/></td>
 
 			<td>
+			<button class="btn btn-default btn-sm" ng-click="updateCharacter(character)" ng-disabled="!edition">Update</button>
 			<button class="btn btn-info btn-sm" ng-click="editCharacter(character)">Edit</button>
 			<button class="btn btn-danger btn-sm" ng-click="eraseCharacter(character)">Delete</button></td>
 		</tr>
 	</table>
-				<button class="btn btn-default btn-sm" ng-click="updateCharacter(character)">Save Changes</button>
+	</div>			
 
 
 <br/>

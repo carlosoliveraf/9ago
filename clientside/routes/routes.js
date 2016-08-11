@@ -1,6 +1,5 @@
  angular.module('main', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider){
-        console.log('hola');
         $routeProvider
         .when('/', {
             templateUrl: 'templates/loginview.html'

@@ -215,7 +215,7 @@ app.put('/characters', function (req, res) {
 	
 	//var id = req.param('_id');
 	var charEdit = req.body;
-	charController.update(charEdit, function(resp){
+	characterController.update(charEdit, function(resp){
 		res.json(resp);
 
 	});

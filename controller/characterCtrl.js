@@ -75,50 +75,50 @@ exports.update = function(charEdit, callback) {
 	});
 };
 
-exports.update = function(id, characterParam, callback) {
+// exports.update = function(id, characterParam, callback) {
 
-	db.Character.findById(id, function(error, character) {
+// 	db.Character.findById(id, function(error, character) {
 
-		if(characterParam.name) {
+// 		if(characterParam.name) {
 
-			character.name = characterParam.name;
-		}
+// 			character.name = characterParam.name;
+// 		}
 
-		if(characterParam.level) {
+// 		if(characterParam.level) {
 
-			character.level = characterParam.level;
-		}
+// 			character.level = characterParam.level;
+// 		}
 
-		if(characterParam.stamina) {
+// 		if(characterParam.stamina) {
 
-			character.stamina = characterParam.stamina;
-		}
+// 			character.stamina = characterParam.stamina;
+// 		}
 
-		if(characterParam.vocation) {
+// 		if(characterParam.vocation) {
 
-			character.vocation = characterParam.vocation;
-		}
-		if(characterParam.balance) {
+// 			character.vocation = characterParam.vocation;
+// 		}
+// 		if(characterParam.balance) {
 
-			character.vocation = characterParam.balance;
-		}
-		if(characterParam.owner) {
+// 			character.vocation = characterParam.balance;
+// 		}
+// 		if(characterParam.owner) {
 
-			character.vocation = characterParam.owner;
-		}
+// 			character.vocation = characterParam.owner;
+// 		}
 
-		character.save(function(error, character) {
+// 		character.save(function(error, character) {
 
-			if(error) {
+// 			if(error) {
 
-				callback({error: 'Não foi possivel salvar o usuario'});
-			} else {
+// 				callback({error: 'Não foi possivel salvar o usuario'});
+// 			} else {
 
-				callback(character);
-			}
-		});
-	});
-};
+// 				callback(character);
+// 			}
+// 		});
+// 	});
+// };
 
 
 exports.delete = function(id, callback) {
