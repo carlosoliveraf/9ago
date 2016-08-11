@@ -21,8 +21,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.vocations = [ 'Knight' ,'Elite Knight','Paladin' ,'Royal Paladin','Sorcerer' , 'Master Sorcerer','Druid', 'Elder Druid'];
 
 		$scope.findCharacters = function (character) {
-		$http.get('http://localhost:5000/characters/').then(function (response) {
-		//$http.get('https://lit-hamlet-34738.herokuapp.com/characters/').then(function (response) {
+		//$http.get('http://localhost:5000/characters/').then(function (response) {
+		$http.get('https://shrouded-refuge-17729.herokuapp.com/characters/').then(function (response) {
 			//$scope.characters = response.data;
 			delete $scope.characters;
 			$scope.characters = [];
@@ -54,8 +54,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			
 			var characString = JSON.stringify(character);
 
-			var res = $http.post('http://localhost:5000/characters', character);
-			//var res = $http.post('https://lit-hamlet-34738.herokuapp.com/characters', character);
+			//var res = $http.post('http://localhost:5000/characters', character);
+			var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/characters', character);
 
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
@@ -73,8 +73,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		};
 
 		$scope.updateCharacter = function(character){
-			var res = $http.put('http://localhost:5000/characters', character);
-			//var res = $http.put('https://lit-hamlet-34738.herokuapp.com/characters', character);
+			//var res = $http.put('http://localhost:5000/characters', character);
+			var res = $http.put('https://shrouded-refuge-17729.herokuapp.com/characters', character);
 
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
@@ -90,8 +90,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		$scope.eraseCharacter = function (character) {
 			var id = character._id;
-			var res = $http.delete('http://localhost:5000/characters/'+id);
-			//var res = $http.delete('https://lit-hamlet-34738.herokuapp.com/characters/'+id);
+			//var res = $http.delete('http://localhost:5000/characters/'+id);
+			var res = $http.delete('https://shrouded-refuge-17729.herokuapp.com/characters/'+id);
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
 			var posicao = $scope.characters.indexOf(character);
