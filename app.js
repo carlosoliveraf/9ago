@@ -17,6 +17,17 @@ var itens = [
 ];
 
 
+var tibia = require('tibia-node-crawler');
+ 
+tibia.character('Olivera Rullezz', function(data){
+  console.log(data.character);
+  console.log(data.character.level);
+  console.log(data.achievements);
+  console.log(data.deaths);
+  //etc 
+  console.log(data);
+});
+
 
 app.get('/', function(req, res) {
     res.sendfile('index.html', {root: __dirname })

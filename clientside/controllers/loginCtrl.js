@@ -14,8 +14,8 @@ angular.module("main").controller("loginCtrl", function ($rootScope, $scope, $ht
 
 
     $scope.login = function (params) {
-		//$http.get('http://localhost:5000/users/').then(function (response) {
-		$http.get('https://shrouded-refuge-17729.herokuapp.com/users/').then(function (response) {
+		$http.get('http://localhost:5000/users/').then(function (response) {
+		//$http.get('https://shrouded-refuge-17729.herokuapp.com/users/').then(function (response) {
 			$scope.users = response.data;
 			var login = params.login;
 			var passw = params.password;
