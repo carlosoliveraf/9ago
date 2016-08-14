@@ -7,8 +7,8 @@ angular.module("main").controller("signinCtrl", function ($rootScope, $scope, $h
 	$scope.emailAlreadyTaken;
 
 	$scope.findUsers = function () {
-		$http.get('http://localhost:5000/users/').then(function (response) {
-		//$http.get('https://shrouded-refuge-17729.herokuapp.com/users/').then(function (response) {
+		//$http.get('http://localhost:5000/users/').then(function (response) {
+		$http.get('https://shrouded-refuge-17729.herokuapp.com/users/').then(function (response) {
 			$scope.users = response.data;
 		});
 	};
@@ -60,8 +60,8 @@ angular.module("main").controller("signinCtrl", function ($rootScope, $scope, $h
     		user.created_at = new Date();
     		var userString = JSON.stringify(user);
 
-			var res = $http.post('http://localhost:5000/users', user);
-			//var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/users', user);
+			//var res = $http.post('http://localhost:5000/users', user);
+			var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/users', user);
 			
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
