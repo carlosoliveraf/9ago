@@ -6,6 +6,20 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.characters = [""];
 		$scope.edition = false;
 
+		$scope.checkCharacter = function(oficial){
+			//$http.get('http://localhost:5000/oficial/'+oficial.name).then(function (response) {
+			$http.get('https://shrouded-refuge-17729.herokuapp.com/oficial/' + oficial.name).then(function (response) {
+			$scope.oficialResp = response.data;
+			delete $scope.oficial;
+			
+			
+
+		});
+		};
+
+
+		
+
 
 	    $scope.checkLogged = function(){
 					if($rootScope.logged){
@@ -38,13 +52,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		$scope.findCharacters();
 
-		$scope.isLevelNumber = function(level){
-			if(isNaN(level)){
-				delete $scope.newCharacter.level;
-			}
-
-
-		}
+	
 
 		
 

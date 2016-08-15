@@ -3,30 +3,25 @@ var app = require('./app_config.js');
 
 var userController = require('./controller/userController.js');
 var characterController = require('./controller/characterCtrl.js');
+var oficialController = require('./controller/oficialCtrl.js');
 var characController = require('./controller/characCtrl.js');
 
 
 var validator = require('validator');
 
-var itens = [
-	{description: "Água", price: 4},
-	{description: "Coca-Cola", price: 5},
-	{description: "Cerveja", price: 7},
-	{description: "Vinho", price: 12},
-	{description: "Café", price: 4}
-];
 
 
-var tibia = require('tibia-node-crawler');
+
+// var tibia = require('tibia-node-crawler');
  
-tibia.character('Olivera Rullezz', function(data){
-  console.log(data.character);
-  console.log(data.character.level);
-  console.log(data.achievements);
-  console.log(data.deaths);
-  //etc 
-  console.log(data);
-});
+// tibia.character('Olivera Rullezz', function(data){
+//   console.log(data.character);
+//   console.log(data.character.level);
+//   console.log(data.achievements);
+//   console.log(data.deaths);
+//   //etc 
+//   console.log(data);
+// });
 
 
 app.get('/', function(req, res) {
@@ -126,6 +121,19 @@ app.get('/characters', function (req, res) {
 
 
 	//res.json(itens);
+});
+
+app.get('/oficial/:name', function (req, res) {
+
+	var name = req.param('name');
+	oficialController.oficial(name, function(resp){
+		res.json(resp);
+
+	});
+
+
+	//res.status(500).end();
+	// res.json(itens);
 });
 
 app.get('/characters/:id', function (req, res) {
