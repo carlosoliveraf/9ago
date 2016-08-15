@@ -23,12 +23,12 @@
 			<td ng-if="!edition">{{character.name}}</td>
 			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.name" name="name" placeholder="Name" ng-required="true"/></td>
 			<td ng-if="!edition">{{character.level}}</td>
-			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.level" name="level" placeholder="Level" ng-required="true"/></td>
+			<td ng-if="edition"><input style="width: 100%" type="number" ng-model="character.level" name="level" placeholder="Level" ng-required="true"/></td>
 			<td ng-if="!edition">{{character.vocation}}</td>
 			<td ng-if="edition"><select ng-model="character.vocation" style="margin: -2%; background-color: #ffffff float: right;" class="form-control" name="vocation" ng-options="vocation for vocation in vocations">
 	</select></td>
 			<td ng-if="!edition">{{character.stamina}}</td>
-			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.stamina" name="stamina" placeholder="Stamina" ng-required="true"/></td>
+			<td ng-if="edition"><input style="width: 100%" type="number" ng-model="character.stamina" name="stamina" placeholder="Stamina" ng-required="true"/></td>
 
 			<td>
 			<button class="btn btn-default btn-sm" ng-click="updateCharacter(character)" ng-disabled="!edition">Update</button>
