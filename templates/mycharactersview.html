@@ -25,8 +25,7 @@
 			<td ng-if="!edition">{{character.level}}</td>
 			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.level" name="level" placeholder="Level" ng-required="true"/></td>
 			<td ng-if="!edition">{{character.vocation}}</td>
-			<td ng-if="edition"><select ng-model="newcharacter.vocation" style="margin: 2%; background-color: #ffffff; width: 45%; float: right;" class="form-control" name="vocation" ng-options="vocation for vocation in vocations">
-		<option value="">Select the vocation</option>
+			<td ng-if="edition"><select ng-model="character.vocation" style="margin: -2%; background-color: #ffffff float: right;" class="form-control" name="vocation" ng-options="vocation for vocation in vocations">
 	</select></td>
 			<td ng-if="!edition">{{character.stamina}}</td>
 			<td ng-if="edition"><input style="width: 100%" type="text" ng-model="character.stamina" name="stamina" placeholder="Stamina" ng-required="true"/></td>
