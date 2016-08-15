@@ -12,7 +12,7 @@
 		<option value="">Select the vocation</option>
 	</select>
 
-	<input type="number" style="margin: 2%; background-color: #ffffff ; width: 45%; float: left;" class="form-control" ng-model="newcharacter.level" name="level" placeholder="Level" ng-required="true"/>
+	<input type="number" style="margin: 2%; background-color: #ffffff ; width: 45%; float: left;" class="form-control" ng-model="newcharacter.level" name="level" placeholder="Level" ng-required="true" ng-change="isLevelNumber(newcharacter.level)"/>
 	
 	<input type="text" style="margin: 2%; background-color: #ffffff; width: 45%; float: right;" class="form-control" ng-model="newcharacter.stamina" name="stamina" placeholder="Stamina" ng-required="true"/>
 

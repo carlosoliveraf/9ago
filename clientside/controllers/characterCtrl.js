@@ -38,7 +38,14 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		$scope.findCharacters();
 
-		
+		$scope.isLevelNumber = function(level){
+			if(isNaN(level)){
+				delete $scope.newCharacter.level;
+			}
+
+
+		}
+
 		
 
 		//https://blooming-headland-84997.herokuapp.com/characters/
