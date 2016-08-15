@@ -9,9 +9,9 @@ var cron = require('node-cron');
 
 var validator = require('validator');
 
-var job = new cron.CronJob('* * * * *', function() {  
-    console.log('Function executed!');
-}, null, true);
+// var job = new cron.CronJob('* * * * *', function() {  
+//     console.log('Function executed!');
+// }, null, true);
 
 
 // var tibia = require('tibia-node-crawler');
