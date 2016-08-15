@@ -8,8 +8,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		$scope.checkCharacter = function(oficial){
 			if(oficial){
-			$http.get('http://localhost:5000/oficial/'+oficial.name).then(function (response) {
-			//$http.get('https://shrouded-refuge-17729.herokuapp.com/oficial/' + oficial.name).then(function (response) {
+			//$http.get('http://localhost:5000/oficial/'+oficial.name).then(function (response) {
+			$http.get('https://shrouded-refuge-17729.herokuapp.com/oficial/' + oficial.name).then(function (response) {
 			$scope.oficialResp = response.data;
 			delete $scope.oficial;
 			}
