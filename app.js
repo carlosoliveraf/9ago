@@ -5,11 +5,13 @@ var userController = require('./controller/userController.js');
 var characterController = require('./controller/characterCtrl.js');
 var oficialController = require('./controller/oficialCtrl.js');
 var characController = require('./controller/characCtrl.js');
-
+var cron = require('node-cron');
 
 var validator = require('validator');
 
-
+var job = new cron.CronJob('* * * * *', function() {  
+    console.log('Function executed!');
+}, null, true);
 
 
 // var tibia = require('tibia-node-crawler');
