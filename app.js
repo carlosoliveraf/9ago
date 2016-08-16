@@ -5,13 +5,28 @@ var userController = require('./controller/userController.js');
 var characterController = require('./controller/characterCtrl.js');
 var oficialController = require('./controller/oficialCtrl.js');
 var characController = require('./controller/characCtrl.js');
-var cron = require('node-cron');
-
+var CronJob = require('cron').CronJob;
 var validator = require('validator');
+var tibia = require('tibia-node-crawler');
 
-// var job = new cron.CronJob('* * * * *', function() {  
-//     console.log('Function executed!');
-// }, null, true);
+
+var characterObj;
+	tibia.character('Olivera Rullezz', function(data){
+		characterObj = data.character;
+ 		characterObj.lastBackup = new Date();
+ 		console.log(characterObj);
+	});
+
+	oficialController.save(characterObj, function(resp){});
+  	//console.log('Saved '+ characterObj.name+' at: ' + (new Date()));
+
+
+
+
+new CronJob('* * * * *', function() {
+	
+
+}, null, true, 'America/Los_Angeles');
 
 
 // var tibia = require('tibia-node-crawler');

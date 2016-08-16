@@ -33,22 +33,14 @@ db.once('open', function(){
 
 	exports.Character = mongoose.model('Character', characterSchema);
 
+	var oficialSchema = mongoose.Schema({
+		name: String,
+		level: Number,
+		lastBackup: Date
+	});
+
+	exports.Oficial = mongoose.model('Oficial', oficialSchema);
+
 });
 
-// 	var characterSchema = mongoose.Schema({
-// 		name: String,
-// 		level: Number,
-// 		stamina: Number,
-// 		vocation: String,
-// 		balance: Number,
-// 		equipments: {
-// 			name: String,
-// 			value: Number,
-// 			type: String 
-// 		}
-// 	});
-
-// 	exports.Character = mongoose.model('Character', characterSchema);
-
-// });
 
