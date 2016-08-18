@@ -6,6 +6,8 @@ angular.module("main").controller("signinCtrl", function ($rootScope, $scope, $h
 	$scope.userAlreadyTaken;
 	$scope.emailAlreadyTaken;
 
+
+
 	$scope.findUsers = function () {
 		$http.get('http://localhost:5000/users/').then(function (response) {
 		//$http.get('https://shrouded-refuge-17729.herokuapp.com/users/').then(function (response) {

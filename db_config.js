@@ -23,10 +23,13 @@ db.once('open', function(){
 
 	var characterSchema = mongoose.Schema({
 		name: String,
+		sex: String,
 		level: Number,
 		vocation: String,
 		stamina: Number,
 		balance: Number,
+		world: String,
+		residence: String,
 		// equipments : [{ 'helmet': String, 'armor': String }],
 		owner: String
 	});

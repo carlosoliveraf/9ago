@@ -61,14 +61,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		//https://blooming-headland-84997.herokuapp.com/characters/
 
 		$scope.saveCharacter = function(character){
-			// character.equipments = {
-			// 	'helmet': character.helmet,
-			// 	'armor': character.armor
-			// };
+
 			character.owner = $rootScope.username;
-			// delete character.helmet;
-			// delete character.armor;
-			
 			var characString = JSON.stringify(character);
 
 			var res = $http.post('http://localhost:5000/characters', character);
@@ -106,6 +100,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 
 		$scope.eraseCharacter = function (character) {
+			var confirmBox = confirm("This character will be deleted from your favorites. Are you sure?");
+			if (confirmBox == true) {
 			var id = character._id;
 			var res = $http.delete('http://localhost:5000/characters/'+id);
 			//var res = $http.delete('https://shrouded-refuge-17729.herokuapp.com/characters/'+id);
@@ -119,6 +115,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			res.error(function(data, status, headers, config) {
 			alert( "failure message: " + JSON.stringify({data: data}));
 			});
+			}
 		// var id = character.id;
 		// $http.delete('http://127.0.0.1:5000/characters/'+id).then(function (response) {
 		// 	$scope.characters = response.data;

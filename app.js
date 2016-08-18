@@ -10,23 +10,22 @@ var validator = require('validator');
 var tibia = require('tibia-node-crawler');
 
 
-var characterObj;
-	tibia.character('Olivera Rullezz', function(data){
-		characterObj = data.character;
- 		characterObj.lastBackup = new Date();
- 		console.log(characterObj);
-	});
-
-	oficialController.save(characterObj, function(resp){});
-  	//console.log('Saved '+ characterObj.name+' at: ' + (new Date()));
 
 
-
-
-new CronJob('* * * * *', function() {
 	
 
-}, null, true, 'America/Los_Angeles');
+
+// new CronJob('* * * * *', function() {
+// 	var characterObj;
+// 	tibia.character('Olivera Rullezz', function(data){
+// 		characterObj = data.character;
+//  		characterObj.lastBackup = new Date();
+//  		oficialController.save(characterObj, function(resp){});
+//   		console.log('Saved backup of '+ characterObj.name+' at: ' + (new Date()));
+// 	});	
+
+
+// }, null, true, 'America/Los_Angeles');
 
 
 // var tibia = require('tibia-node-crawler');
