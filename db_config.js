@@ -44,6 +44,17 @@ db.once('open', function(){
 
 	exports.Oficial = mongoose.model('Oficial', oficialSchema);
 
+	var blacklistSchema = mongoose.Schema({
+		name: String,
+		level: Number,
+		vocation: String,
+		obs: String,
+		listedBy: String,
+		lastBackup: Date
+	});
+
+	exports.BlackList = mongoose.model('BlackList', blacklistSchema);
+
 });
 
 

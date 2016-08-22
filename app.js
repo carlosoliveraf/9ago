@@ -1,31 +1,100 @@
 var app = require('./app_config.js');
 
 
+
 var userController = require('./controller/userController.js');
 var characterController = require('./controller/characterCtrl.js');
 var oficialController = require('./controller/oficialCtrl.js');
 var characController = require('./controller/characCtrl.js');
+var blacklistController = require('./controller/blacklistCtrl.js');
+
 var CronJob = require('cron').CronJob;
 var validator = require('validator');
 var tibia = require('tibia-node-crawler');
 
 
+//
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
+var ObjectId = require('mongodb').ObjectID;
+var url = 'mongodb://root:mongouser@ds021895.mlab.com:21895/tbamonitor';
+//
+
+//
+var findRestaurants = function(db, callback) {
+   var cursor =db.collection('characters').find( );
+   cursor.each(function(err, doc) {
+      assert.equal(err, null);
+      if (doc != null) {
+      	var char = doc;
+		var characterObj;
+		tibia.character(char.name, function(data){
+		characterObj = data.character;
+ 		characterObj.lastBackup = new Date(); 	
+ 		//oficialController.save(characterObj, function(resp){});
+   		//console.log('Saved backup of '+ characterObj.name+' at: ' + (new Date()));	
+ 		characterController.updateByName(characterObj, function(resp){});
+
+
+	});	
+
+         //console.dir(doc);
+      } else {
+         callback();
+      }
+   });
+};
+
+var findRestaurantsBlack = function(db, callback) {
+   var cursor =db.collection('blacklists').find( );
+   cursor.each(function(err, doc) {
+      assert.equal(err, null);
+      if (doc != null) {
+      	var char = doc;
+		var characterObj;
+		tibia.character(char.name, function(data){
+		characterObj = data.character;
+ 		characterObj.lastBackup = new Date(); 	
+ 		//oficialController.save(characterObj, function(resp){});
+   		//console.log('Saved backup of '+ characterObj.name+' at: ' + (new Date()));	
+ 		blacklistController.updateByName(characterObj, function(resp){});
+
+ 		
+	});	
+
+         //console.dir(doc);
+      } else {
+         callback();
+      }
+   });
+};
+//
+
+new CronJob('* * * *', function() {
+
+	MongoClient.connect(url, function(err, db) {
+	assert.equal(null, err);
+  	findRestaurants(db, function() {
+    db.close();
+  	});
+	});
+
+	MongoClient.connect(url, function(err, db) {
+	assert.equal(null, err);
+  	findRestaurantsBlack(db, function() {
+    db.close();
+  	});
+	});
+	
+		
 
 
 	
 
 
-// new CronJob('* * * * *', function() {
-// 	var characterObj;
-// 	tibia.character('Olivera Rullezz', function(data){
-// 		characterObj = data.character;
-//  		characterObj.lastBackup = new Date();
-//  		oficialController.save(characterObj, function(resp){});
-//   		console.log('Saved backup of '+ characterObj.name+' at: ' + (new Date()));
-// 	});	
+}, null, true, 'America/Los_Angeles');
 
 
-// }, null, true, 'America/Los_Angeles');
 
 
 // var tibia = require('tibia-node-crawler');
@@ -139,6 +208,44 @@ app.get('/characters', function (req, res) {
 	//res.json(itens);
 });
 
+app.get('/blacklist', function (req, res) {
+	//res.status(500).end();
+	
+	blacklistController.list(function(resp){
+		res.json(resp);
+	});
+
+
+	//res.json(itens);
+});
+
+app.post('/blacklist', function (req, res) {
+
+	var blacklistC = req.body;
+	blacklistController.save(blacklistC, function(resp){
+		res.json(resp);
+	});
+
+
+	//res.end("post")
+	//itens.push(item);
+	//res.end();
+});
+
+app.delete('/blacklist/:id', function (req, res) {
+
+	var id = req.param('id');
+		blacklistController.delete(id, function(resp){
+			res.json(resp);
+
+		});
+
+
+	//res.status(500).end();
+	// res.json(itens);
+});
+
+
 app.get('/oficial/:name', function (req, res) {
 
 	var name = req.param('name');
@@ -192,7 +299,6 @@ app.get('/users/:id', function (req, res) {
 
 app.post('/users', function (req, res) {
 
-	
 	var user = req.body;
 	userController.save(user, function(resp){
 		res.json(resp);
@@ -209,7 +315,7 @@ app.post('/characters', function (req, res) {
 
 	
 	var character = req.body;
-	console.log(req.body);
+	//console.log(req.body);
 	characterController.save(character, function(resp){
 		res.json(resp);
 	});

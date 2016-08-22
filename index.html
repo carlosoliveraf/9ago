@@ -9,9 +9,40 @@
         .marginPerson {
           margin-right: 0.6%;
         }
+        .bold{
+          font-weight: bold;
+        }
+        .redColor{
+          color: red;
+
+        }
+        .blueColor{
+          color: blue;
+
+        }
+        .blackColor{
+          color: black;
+
+        }
+        .brownColor{
+          color: #493207;
+
+        }
+        .pinkColor{
+          color: #f022d3;
+
+        }
+        .greenColor{
+          color: green;
+
+        }
+        .yellowColor{
+          color: #FAD355;
+
+        }
         </style>
 </head>
-<body background="clientside/img/wall.jpg" style="background-repeat:no-repeat; background-size:cover;">
+<body background="clientside/img/wall.jpg" style="background-repeat:no-repeat; background-size:cover; background-attachment: fixed">
     
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-route/angular-route.js"></script>
@@ -21,6 +52,7 @@
     <script src="clientside/controllers/loginCtrl.js"></script>
     <script src="clientside/controllers/signinCtrl.js"></script>
     <script src="clientside/controllers/characterCtrl.js"></script>
+    <script src="clientside/controllers/blacklistCtrl.js"></script>
     <script src="clientside/controllers/huntingplacesCtrl.js"></script>
     <script src="clientside/controllers/aboutmeCtrl.js"></script>
     <script src="clientside/controllers/404errorCtrl.js"></script>
@@ -53,6 +85,7 @@
               <li><a href="#/mycharactersview">My Characters</a></li>
               <li><a href="#/newcharactersview">New Character</a></li>
               <li><a href="#/charactersstatsview">Characters Stats</a></li>
+              <li><a href="#/blacklistview">Blacklist</a></li>
             </ul>
           </div>
         </li>        

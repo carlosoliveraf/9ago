@@ -33,6 +33,10 @@
         templateUrl: 'templates/newcharactersview.html',
         controller: 'characterCtrl',
         })
+        .when('/blacklistview', {
+        templateUrl: 'templates/blacklistview.html',
+        controller: 'blacklistCtrl',
+        })
         .when('/listplacesview', {
         templateUrl: 'templates/listplacesview.html',
         controller: 'huntingplacesCtrl',

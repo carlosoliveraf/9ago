@@ -1,5 +1,58 @@
 var db = require('../db_config.js');
+var CronJob = require('cron').CronJob;
+var tibia = require('tibia-node-crawler');
 
+// var MongoClient = require('mongodb').MongoClient;
+// var assert = require('assert');
+// var ObjectId = require('mongodb').ObjectID;
+// var url = 'mongodb://root:mongouser@ds021895.mlab.com:21895/tbamonitor';
+
+// var characters = [];
+// var updateChars = function(db, callback, characterObj){
+// 				db.collection('characters').save(function(error, characterObj) {
+// 			if(error) {
+// 				callback({error: 'Não foi possivel salvar o character'});
+// 			} else {
+// 				callback(character);
+// 			}
+// 		});
+// 	};
+
+// var findCharacters = function(db, callback) {
+	
+//    var cursor =db.collection('characters').find();
+//    cursor.each(function(err, doc) {
+//       assert.equal(err, null);
+//       if (doc != null) {
+//       	 characters.push(doc);	
+//       	 var name = doc.name;
+//       	tibia.character(name, function(data){
+// 		var characterObj = data.character;
+	
+//  		updateChars(db, function(){
+
+//  		},characterObj);
+// 	});
+
+//       } else {
+//          callback();
+//       }
+//    });
+// };
+
+
+// new CronJob('* * * * * *', function() {
+
+// 	var characterObj;
+// 	tibia.character('Olivera Rullezz', function(data){
+// 		characterObj = data.character;
+//  		characterObj.lastBackup = new Date();
+//  		oficialController.save(characterObj, function(resp){});
+//   		console.log('Saved backup of '+ characterObj.name+' at: ' + (new Date()));
+// 	});	
+
+
+// }, null, true, 'America/Los_Angeles');
 
 exports.list = function(callback){
 
@@ -45,6 +98,26 @@ exports.save = function(character, callback){
 	});
 };
 
+exports.updateByName = function(charEdit, callback) {
+	db.Character.findOne({ 'name': charEdit.name }, function (err, character) {
+		
+		if(character){
+		if(charEdit.level)
+			character.level = charEdit.level;
+		if(charEdit.residence)
+			character.residence = charEdit.residence;
+
+			character.save(function(error, character) {
+  				if (err) return callback({error: 'Não foi possivel salvar o character'});
+  				callback(character);
+		});
+		}
+	});
+};
+
+
+
+		
 
 exports.update = function(charEdit, callback) {
 

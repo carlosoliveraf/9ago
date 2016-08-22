@@ -5,6 +5,21 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.charactersStats = false;
 		$scope.characters = [""];
 		$scope.edition = false;
+		$scope.showChars = false;
+
+		$scope.checkVoc = function(char){
+			if(char.vocation == 'Elite Knight') return 'blueColor bold';
+			if(char.vocation == 'Knight') return 'blueColor';
+			if(char.vocation == 'Royal Paladin') return 'yellowColor bold';
+			if(char.vocation == 'Paladin') return 'yellowColor';
+			if(char.vocation == 'Master Sorcerer') return 'pinkColor bold';
+			if(char.vocation == 'Sorcerer') return 'pinkColor';
+			if(char.vocation == 'Elder Druid') return 'greenColor bold';
+			if(char.vocation == 'Druid') return 'greenColor';
+
+
+
+		};
 
 		$scope.checkCharacter = function(oficial){
 			if(oficial){
@@ -19,6 +34,10 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		}
 		};
 
+		$scope.showAll = function(){
+			$scope.showChars = !$scope.showChars;
+			$scope.character = null;
+		};
 
 		
 
@@ -61,7 +80,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		//https://blooming-headland-84997.herokuapp.com/characters/
 
 		$scope.saveCharacter = function(character){
-
+			if(character){
 			character.owner = $rootScope.username;
 			var characString = JSON.stringify(character);
 
@@ -72,11 +91,14 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			$scope.message = data;
 			alert( "Character created!");
 			delete $scope.newcharacter;
+			delete $scope.oficialResp;
 			});
 			res.error(function(data, status, headers, config) {
 			alert( "failure message: " + JSON.stringify({data: data}));
 			});		
-    		
+    		}else{
+    			alert( "Please find an existing character before trying to save!");
+    		}
 		};
 
 		$scope.editCharacter = function(character){
