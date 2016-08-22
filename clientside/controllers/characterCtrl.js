@@ -23,8 +23,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		$scope.checkCharacter = function(oficial){
 			if(oficial){
-			$http.get('http://localhost:5000/oficial/'+oficial.name).then(function (response) {
-			//$http.get('https://shrouded-refuge-17729.herokuapp.com/oficial/' + oficial.name).then(function (response) {
+			//$http.get('http://localhost:5000/oficial/'+oficial.name).then(function (response) {
+			$http.get('https://shrouded-refuge-17729.herokuapp.com/oficial/' + oficial.name).then(function (response) {
 			$scope.oficialResp = response.data;
 			delete $scope.oficial;
 			}
@@ -56,8 +56,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.vocations = [ 'Knight' ,'Elite Knight','Paladin' ,'Royal Paladin','Sorcerer' , 'Master Sorcerer','Druid', 'Elder Druid'];
 
 		$scope.findCharacters = function (character) {
-		$http.get('http://localhost:5000/characters/').then(function (response) {
-		//$http.get('https://shrouded-refuge-17729.herokuapp.com/characters/').then(function (response) {
+		//$http.get('http://localhost:5000/characters/').then(function (response) {
+		$http.get('https://shrouded-refuge-17729.herokuapp.com/characters/').then(function (response) {
 			//$scope.characters = response.data;
 			delete $scope.characters;
 			$scope.characters = [];
@@ -84,8 +84,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			character.owner = $rootScope.username;
 			var characString = JSON.stringify(character);
 
-			var res = $http.post('http://localhost:5000/characters', character);
-			//var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/characters', character);
+			//var res = $http.post('http://localhost:5000/characters', character);
+			var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/characters', character);
 
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
@@ -106,8 +106,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		};
 
 		$scope.updateCharacter = function(character){
-			var res = $http.put('http://localhost:5000/characters', character);
-			//var res = $http.put('https://shrouded-refuge-17729.herokuapp.com/characters', character);
+			//var res = $http.put('http://localhost:5000/characters', character);
+			var res = $http.put('https://shrouded-refuge-17729.herokuapp.com/characters', character);
 
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
@@ -125,8 +125,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			var confirmBox = confirm("This character will be deleted from your favorites. Are you sure?");
 			if (confirmBox == true) {
 			var id = character._id;
-			var res = $http.delete('http://localhost:5000/characters/'+id);
-			//var res = $http.delete('https://shrouded-refuge-17729.herokuapp.com/characters/'+id);
+			//var res = $http.delete('http://localhost:5000/characters/'+id);
+			var res = $http.delete('https://shrouded-refuge-17729.herokuapp.com/characters/'+id);
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
 			var posicao = $scope.characters.indexOf(character);
