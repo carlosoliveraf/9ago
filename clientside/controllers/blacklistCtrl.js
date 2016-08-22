@@ -72,7 +72,7 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
 			var characString = JSON.stringify(character);
 
 			//var res = $http.post('http://localhost:5000/blacklist', character);
-			var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/characters', character);
+			var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/blacklist', character);
 
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
