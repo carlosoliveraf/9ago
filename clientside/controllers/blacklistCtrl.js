@@ -70,7 +70,7 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
 			if(character){
 			character.listedBy = $rootScope.username;
 			var characString = JSON.stringify(character);
-
+//
 			//var res = $http.post('http://localhost:5000/blacklist', character);
 			var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/blacklist', character);
 
@@ -102,7 +102,7 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
 			if (confirmBox == true) {
 			var id = character._id;
 			//var res = $http.delete('http://localhost:5000/blacklist/'+id);
-			var res = $http.delete('https://shrouded-refuge-17729.herokuapp.com/characters/'+id);
+			var res = $http.delete('https://shrouded-refuge-17729.herokuapp.com/blacklist/'+id);
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;
 			var posicao = $scope.characters.indexOf(character);
