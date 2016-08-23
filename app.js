@@ -1,7 +1,5 @@
 var app = require('./app_config.js');
 
-
-
 var userController = require('./controller/userController.js');
 var characterController = require('./controller/characterCtrl.js');
 var oficialController = require('./controller/oficialCtrl.js');
@@ -24,7 +22,7 @@ var ObjectId = require('mongodb').ObjectID;
 var url = 'mongodb://root:mongouser@ds021895.mlab.com:21895/tbamonitor';
 //
 
-//
+
 var findRestaurants = function(db, callback) {
    var cursor =db.collection('characters').find( );
    cursor.each(function(err, doc) {
