@@ -27,6 +27,7 @@ db.once('open', function(){
 		level: Number,
 		vocation: String,
 		stamina: Number,
+		staminaUpdate: Date,
 		balance: Number,
 		world: String,
 		residence: String,
@@ -54,6 +55,18 @@ db.once('open', function(){
 	});
 
 	exports.BlackList = mongoose.model('BlackList', blacklistSchema);
+
+	var huntingplaceSchema = mongoose.Schema({
+		name: String,
+		city: String,
+		vocation: String,
+		range: String,
+		detail: String,
+		owner: String,
+		link: String
+	});
+
+	exports.HuntingPlace = mongoose.model('HuntingPlace', huntingplaceSchema);
 
 });
 

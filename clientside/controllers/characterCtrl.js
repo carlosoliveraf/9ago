@@ -20,20 +20,6 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		};
 
-//var characters
-
-
-//var onlines
-//variavel transitoria
-
-//funcao checkagem
-
-
-//funcao verifica se online
-function myFunction() {
-	
-	
-}
 
 
 
@@ -190,9 +176,13 @@ $http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function
 			alert( "failure message: " + JSON.stringify({data: data}));
 			});		
 			$scope.edition = false;
-		}
+		};
+
+		$scope.updateLastStamina = function(character){
 
 
+
+		};
 
 		$scope.eraseCharacter = function (character) {
 			var confirmBox = confirm("This character will be deleted from your favorites. Are you sure?");
