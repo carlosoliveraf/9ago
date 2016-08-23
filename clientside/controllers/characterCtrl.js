@@ -6,6 +6,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.characters = [""];
 		$scope.edition = false;
 		$scope.showChars = false;
+		$scope.onlineChars = [];
 
 		$scope.checkVoc = function(char){
 			if(char.vocation == 'Elite Knight') return 'blueColor bold';
@@ -17,9 +18,58 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			if(char.vocation == 'Elder Druid') return 'greenColor bold';
 			if(char.vocation == 'Druid') return 'greenColor';
 
+		};
 
+//var characters
+
+
+//var onlines
+//variavel transitoria
+
+//funcao checkagem
+
+
+//funcao verifica se online
+function myFunction() {
+	
+	
+}
+
+
+
+	$scope.isOnline = function(){
+			do {
+				var name;
+    			var names = [];
+    			var online = $scope.onlineChars;
+    			for(index in $scope.characters){
+					names.push(new String($scope.characters[index].name).valueOf());
+				}
+				    			console.log(typeof(names));
+
+				function checkContain(online) {
+					if((online.replace(" ", "_").trim()) == (name.replace(" ", "_").trim())){
+					console.log("online: "+online);
+					console.log("name: "+name);
+				}
+    				return (online.replace(" ", "_").trim()) == (name.replace(" ", "_").trim()); 
+				}
+				for(var index in names){
+					name = names[index];
+					var teste = online.some(checkContain);
+					if(teste){
+						$scope.characters[index].isOnline = true;
+						console.log("achei um!");
+						console.log($scope.characters[index]);
+					}
+				}
+
+
+			} while (!$scope.characters || !$scope.onlineChars);
 
 		};
+
+	
 
 		$scope.checkCharacter = function(oficial){
 			if(oficial){
@@ -56,6 +106,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.vocations = [ 'Knight' ,'Elite Knight','Paladin' ,'Royal Paladin','Sorcerer' , 'Master Sorcerer','Druid', 'Elder Druid'];
 
 		$scope.findCharacters = function (character) {
+			$scope.onlineChars = [];
 		//$http.get('http://localhost:5000/characters/').then(function (response) {
 		$http.get('https://shrouded-refuge-17729.herokuapp.com/characters/').then(function (response) {
 			//$scope.characters = response.data;
@@ -63,12 +114,33 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			$scope.characters = [];
 			for(index in response.data){
 				if(response.data[index].owner == $rootScope.username){
-
 					$scope.characters.push(response.data[index]);
 				};
 			};
 
+			//$http.get('http://localhost:5000/characters/').then(function (response) {
+			
+    // defer the execution of anonymous function for 
+    // 3 seconds and go to next line of code.
+  //  setTimeout(function(){ 
+$http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function (response) {
+			$scope.resp = response.data;
+			//console.log(response.data);
+			for(index in $scope.resp){
+				$scope.onlineChars.push(new String($scope.resp[index].name).valueOf());
+			}
+			//console.log($scope.onlineChars);
+			$scope.isOnline();
 		});
+
+        
+   // }, 500);  
+
+
+			
+
+		});
+
 		};
 
 		$scope.findCharacters();
@@ -102,6 +174,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		};
 
 		$scope.editCharacter = function(character){
+			console.log($scope.onlineChars);
 			$scope.edition = true;
 		};
 
