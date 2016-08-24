@@ -24,6 +24,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 
 	$scope.isOnline = function(){
+
 			do {
 				var name;
     			var names = [];
@@ -31,14 +32,17 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
     			for(index in $scope.characters){
 					names.push(new String($scope.characters[index].name).valueOf());
 				}
-				    			console.log(typeof(names));
+				    			console.log(names);
+				    			console.log(online);
 
 				function checkContain(online) {
-					if((online.replace(" ", "_").trim()) == (name.replace(" ", "_").trim())){
-					console.log("online: "+online);
-					console.log("name: "+name);
-				}
-    				return (online.replace(" ", "_").trim()) == (name.replace(" ", "_").trim()); 
+
+					
+					var nameFrmt = name.replace(/[^A-Za-z]/ig, "");
+					var onlineFrmt = online.replace(/[^A-Za-z]/ig, "");
+
+					return (nameFrmt === onlineFrmt );
+    			//	return (online.replace(" ", "_").trim()) == (name.replace(" ", "_").trim()); 
 				}
 				for(var index in names){
 					name = names[index];
