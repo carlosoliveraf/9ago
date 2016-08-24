@@ -20,7 +20,15 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		};
 
+		$scope.checkOn = function(char){
+			if(char.isOnline){ 
+				return 'onlineColor bold'
+			}else{
+				//style for offline
+			};
+			
 
+		};
 
 
 	$scope.isOnline = function(){
@@ -32,24 +40,21 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
     			for(index in $scope.characters){
 					names.push(new String($scope.characters[index].name).valueOf());
 				}
-				    			console.log(names);
-				    			console.log(online);
+				    			//console.log(names);
+				    			//console.log(online);
 
 				function checkContain(online) {
 
-					
 					var nameFrmt = name.replace(/[^A-Za-z]/ig, "");
 					var onlineFrmt = online.replace(/[^A-Za-z]/ig, "");
 
 					return (nameFrmt === onlineFrmt );
-    			//	return (online.replace(" ", "_").trim()) == (name.replace(" ", "_").trim()); 
 				}
 				for(var index in names){
 					name = names[index];
 					var teste = online.some(checkContain);
 					if(teste){
 						$scope.characters[index].isOnline = true;
-						console.log("achei um!");
 						console.log($scope.characters[index]);
 					}
 				}
