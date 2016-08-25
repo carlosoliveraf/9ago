@@ -8,6 +8,12 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.showChars = false;
 		$scope.onlineChars = [];
 
+		$scope.selectChar = function(char){
+			$scope.showChars = false;
+			$scope.character = char;
+
+		};
+
 		$scope.staminaClass = function(char){
 			if(char.stamina){
 				var staminaArr = char.stamina.split(":");
