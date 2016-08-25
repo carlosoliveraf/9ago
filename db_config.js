@@ -28,7 +28,7 @@ db.once('open', function(){
 		vocation: String,
 		stamina: Number,
 		staminaUpdate: Date,
-		balance: Number,
+		balance: String,
 		world: String,
 		residence: String,
 		// equipments : [{ 'helmet': String, 'armor': String }],

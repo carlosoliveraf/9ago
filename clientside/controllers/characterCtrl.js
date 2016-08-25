@@ -1,4 +1,4 @@
-angular.module("main").controller("characterCtrl", function ($rootScope, $scope, $http, $location) {
+angular.module("main").controller("characterCtrl", function ($rootScope, $scope, $http, $location, staminaCalc) {
 	
 		$scope.newCharacter = false;
 		$scope.charactersList = false;
@@ -55,7 +55,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 					var teste = online.some(checkContain);
 					if(teste){
 						$scope.characters[index].isOnline = true;
-						console.log($scope.characters[index]);
+						//console.log($scope.characters[index]);
 					}
 				}
 
@@ -109,6 +109,18 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			$scope.characters = [];
 			for(index in response.data){
 				if(response.data[index].owner == $rootScope.username){
+					if(response.data[index].staminaUpdate && response.data[index].stamina){
+						var timePassed = response.data[index].staminaUpdate.getTime() - (new Date()).getTime();
+						var seconds = Math.floor((timePassed)/(1000));
+						var minPassed = (seconds/60)*-1;
+
+						var sta = response.data[index].stamina.split(":");
+						for(var i in sta){
+							sta[i] = parseInt(sta[i]);
+						}
+
+						response.data[index].stamina = staminaCalc.test(minPassed, sta);
+					}
 					$scope.characters.push(response.data[index]);
 				};
 			};
@@ -150,6 +162,9 @@ $http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function
 			if(character){
 			character.owner = $rootScope.username;
 			var characString = JSON.stringify(character);
+			character.staminaUpdate = new Date();
+			character.stamina = " ";
+			character.balance = 0;
 
 			//var res = $http.post('http://localhost:5000/characters', character);
 			var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/characters', character);
@@ -169,11 +184,12 @@ $http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function
 		};
 
 		$scope.editCharacter = function(character){
-			console.log($scope.onlineChars);
+			//console.log($scope.onlineChars);
 			$scope.edition = true;
 		};
 
 		$scope.updateCharacter = function(character){
+			character.staminaUpdate = new Date();
 			//var res = $http.put('http://localhost:5000/characters', character);
 			var res = $http.put('https://shrouded-refuge-17729.herokuapp.com/characters', character);
 
