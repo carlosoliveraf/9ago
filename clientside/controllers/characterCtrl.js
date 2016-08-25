@@ -109,17 +109,32 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			$scope.characters = [];
 			for(index in response.data){
 				if(response.data[index].owner == $rootScope.username){
-					if(response.data[index].staminaUpdate && response.data[index].stamina){
-						var timePassed = response.data[index].staminaUpdate.getTime() - (new Date()).getTime();
+					if(response.data[index].staminaUpdate && response.data[index].stamina != '0'){
+						console.log(response.data[index]);
+						console.log(typeof(response.data[index].staminaUpdate));
+
+						var collectionDate = response.data[index].staminaUpdate; 
+	 	   				var newDate = new Date(collectionDate);
+	 					console.log("tipo da data: "+typeof(newDate));
+	 	   				console.log(newDate);
+
+						var timePassed = newDate.getTime() - (new Date()).getTime();
 						var seconds = Math.floor((timePassed)/(1000));
 						var minPassed = (seconds/60)*-1;
-
+						
 						var sta = response.data[index].stamina.split(":");
+
 						for(var i in sta){
 							sta[i] = parseInt(sta[i]);
 						}
+																		console.log(sta);
 
-						response.data[index].stamina = staminaCalc.test(minPassed, sta);
+						//console.log(sta);
+						//console.log(staminaCalc.test(minPassed, sta));
+						var abc = staminaCalc.test(minPassed, sta);
+						abc = abc[0] + ":" + abc[1];
+						console.log(abc);
+						response.data[index].stamina = abc;
 					}
 					$scope.characters.push(response.data[index]);
 				};
