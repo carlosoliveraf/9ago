@@ -18,7 +18,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 				if(staminaArr[0] == 42){
 					return 'fullStamina bold';
 				}
-				if(staminaArr[0] == 40 ){
+				if(staminaArr[0] >= 40 && staminaArr[0] < 42){
 					return 'bonusStamina bold';
 				}
 				if(staminaArr[0] < 40){
@@ -147,17 +147,16 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 							sta[i] = parseInt(sta[i]);
 						}
 																	
-
-						//console.log(sta);
-						//console.log(staminaCalc.test(minPassed, sta));
+					
 						var abc = staminaCalc.test(minPassed, sta);
+						
 						if(abc[1].toString().length == 1){	
 							abc[1] = "0"+ abc[1];
 						};
 						if(abc[1].toString().length >= 3){
 							abc[1] = abc[1].toString().charAt(0) + abc[1].toString().charAt(1);
 						};
-
+						
 						abc = abc[0] + ":" + abc[1];
 						
 						response.data[index].stamina = abc;

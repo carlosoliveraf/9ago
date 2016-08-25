@@ -2,7 +2,7 @@ angular.module("main").service('staminaCalc', function() {
    
 		//var x = 200;
 		//var a = [37,0];
-		var b = [40,0];
+		
 
 		//
 		//var x = timePassed;
@@ -39,6 +39,7 @@ angular.module("main").service('staminaCalc', function() {
 
     this.test = function (x,a) {
     	// var t calcula os minutos de jogo que faltam para 40
+    	var b = [40,0];
 		var t =x-(minLeftToGreenAFn(a)*3);
 		// testa se o stamina está completo
 		if(t >= 1200 || a[0] == 42){
