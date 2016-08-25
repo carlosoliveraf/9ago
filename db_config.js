@@ -26,7 +26,7 @@ db.once('open', function(){
 		sex: String,
 		level: Number,
 		vocation: String,
-		stamina: Number,
+		stamina: String,
 		staminaUpdate: Date,
 		balance: String,
 		world: String,
