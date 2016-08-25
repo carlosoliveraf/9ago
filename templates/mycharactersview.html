@@ -45,7 +45,7 @@
 
 			<td style="padding-left: 2.5%" ng-class="staminaClass(char)">{{char.stamina}}</td>
 
-			<td>{{char.balance}}</td>
+			<td>{{char.balance | currency}}</td>
 			<td ng-class="checkOn(char)">{{char.isOnline ? "Online" : "Offline"}}</td>
 
 			</tr>

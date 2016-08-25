@@ -154,6 +154,9 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 						if(abc[1].toString().length == 1){	
 							abc[1] = "0"+ abc[1];
 						};
+						if(abc[1].toString().length >= 3){
+							abc[1] = abc[1].toString().charAt(0) + abc[1].toString().charAt(1);
+						};
 
 						abc = abc[0] + ":" + abc[1];
 						

@@ -41,7 +41,7 @@ angular.module("main").service('staminaCalc', function() {
     	// var t calcula os minutos de jogo que faltam para 40
 		var t =x-(minLeftToGreenAFn(a)*3);
 		// testa se o stamina está completo
-		if(t >= 1200){
+		if(t >= 1200 || a[0] == 42){
 			return [42,0]
 		}else{
 			//se sobrou minutos para exceder os 40
