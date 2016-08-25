@@ -8,6 +8,27 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.showChars = false;
 		$scope.onlineChars = [];
 
+		$scope.staminaClass = function(char){
+			if(char.stamina){
+				var staminaArr = char.stamina.split(":");
+				for(var i in staminaArr){
+					staminaArr[i] = parseInt(staminaArr[i]);
+				}
+			
+				if(staminaArr[0] == 42){
+					return 'fullStamina bold';
+				}
+				if(staminaArr[0] == 41 ){
+					return 'bonusStamina bold';
+				}
+				if(staminaArr[0] < 41){
+					return 'lowStamina bold';
+				}
+
+			}
+
+		};
+
 		$scope.checkVoc = function(char){
 			if(char.vocation == 'Elite Knight') return 'blueColor bold';
 			if(char.vocation == 'Knight') return 'blueColor';
@@ -110,13 +131,11 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 			for(index in response.data){
 				if(response.data[index].owner == $rootScope.username){
 					if(response.data[index].staminaUpdate && response.data[index].stamina != '0'){
-						console.log(response.data[index]);
-						console.log(typeof(response.data[index].staminaUpdate));
+						
 
 						var collectionDate = response.data[index].staminaUpdate; 
 	 	   				var newDate = new Date(collectionDate);
-	 					console.log("tipo da data: "+typeof(newDate));
-	 	   				console.log(newDate);
+	 					
 
 						var timePassed = newDate.getTime() - (new Date()).getTime();
 						var seconds = Math.floor((timePassed)/(1000));
@@ -127,13 +146,13 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 						for(var i in sta){
 							sta[i] = parseInt(sta[i]);
 						}
-																		console.log(sta);
+																	
 
 						//console.log(sta);
 						//console.log(staminaCalc.test(minPassed, sta));
 						var abc = staminaCalc.test(minPassed, sta);
 						abc = abc[0] + ":" + abc[1];
-						console.log(abc);
+						
 						response.data[index].stamina = abc;
 					}
 					$scope.characters.push(response.data[index]);
