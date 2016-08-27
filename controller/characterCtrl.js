@@ -131,6 +131,8 @@ exports.update = function(charEdit, callback) {
 		character.level = charEdit.level;
 		if(charEdit.stamina)
 		character.stamina = charEdit.stamina;
+		if(charEdit.staminaUpdate)
+		character.staminaUpdate = charEdit.staminaUpdate;
 		if(charEdit.balance)
 		character.balance = charEdit.balance;
 		if(charEdit.owner)
