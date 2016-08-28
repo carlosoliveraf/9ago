@@ -68,6 +68,15 @@ db.once('open', function(){
 
 	exports.HuntingPlace = mongoose.model('HuntingPlace', huntingplaceSchema);
 
+	var imagemSchema = mongoose.Schema({
+		nome: String,
+		date: Date,
+		file: Buffer
+		
+	},{ collection: 'imagem' });
+
+	exports.Imagem = mongoose.model('imagem', imagemSchema);
+
 });
 
 

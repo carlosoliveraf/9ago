@@ -14,6 +14,12 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 
 		};
 
+		$scope.orderBy = function(field){
+				$scope.field = field;
+				$scope.order = !$scope.order;
+
+		};
+
 		$scope.staminaClass = function(char){
 			if(char.stamina){
 				var staminaArr = char.stamina.split(":");
@@ -237,7 +243,6 @@ $http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function
 		$scope.updateCharacter = function(character){
 			character.staminaUpdate = new Date();
 			//var res = $http.put('http://localhost:5000/characters', character);
-			console.log(character);
 			var res = $http.put('https://shrouded-refuge-17729.herokuapp.com/characters', character);
 			res.success(function(data, status, headers, config) {
 			$scope.message = data;

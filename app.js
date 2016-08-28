@@ -6,6 +6,10 @@ var oficialController = require('./controller/oficialCtrl.js');
 var huntingplaceController = require('./controller/huntingplaceCtrl.js');
 var characController = require('./controller/characCtrl.js');
 var blacklistController = require('./controller/blacklistCtrl.js');
+var imageController = require('./controller/imageCtrl.js');
+var db = require('./db_config.js');
+
+
 
 var CronJob = require('cron').CronJob;
 var validator = require('validator');
@@ -126,6 +130,20 @@ app.get('/isonline', function(req, res) {
 })
 
 
+app.get("/images/:image", function(req,res) {
+    db.Imagem.findOne({ "nome": req.param.image },function(err,imagem) {
+       res.set("Content-Type", "image/jpg");
+       res.send( imagem.file );
+    });
+});
+
+app.post("/images", function(req,res) {
+   
+	var img = req.body;
+	imageController.save(img, function(resp){
+		res.json(resp);
+	});
+});
 
 // var tibia = require('tibia-node-crawler');
  

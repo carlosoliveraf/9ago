@@ -2,21 +2,23 @@
 	<h4>BlackList:</h4>
 
 	<label ng-if="characters.length == 0" style="color: red;font-size: 85%">There's no characters on your blacklist!</label>
-	<div style="width: 100%;margin-top: 5%; border-style: solid;border-radius: 3%;;
+	<div style="background-color: rgba(164,165,165,0.4);width: 100%;margin-top: 5%; border-style: solid;border-radius: 3%;;
     border-width: 1px;
     box-shadow: 10px 10px 5px #888888; height: 20%; display: table; padding: 5%" ng-if="characters.length > 0">
-    <table class="table" style="width: 75%; table-layout: fixed; border-collapse: collapse; margin: auto">
+    <table class="table" style="width: 95%; table-layout: fixed; border-collapse: collapse; margin: auto">
 		<tr>
-			<th style="width: 10%"><img src="./clientside/img/blacklistskull.png" alt="skullicon" style="width: 65%"></th>
-			<th style="width: 40%">Name</th>
-			<th style="width: 27%">Level</th>
-			<th style="width: 33%">Vocation</th>
-			<th style="width: 10%">Option</th>
+			<th style="width: 3%"><img src="./clientside/img/blacklistskull.png" alt="skullicon" style="width: 80%"></th>
+			<th ng-click="orderBy('name')" style="cursor: pointer;width: 12%">Name</th>
+			<th ng-click="orderBy('level')" style="cursor: pointer;width: 7%">Level</th>
+			<th ng-click="orderBy('vocation')" style="cursor: pointer;width: 12%">Vocation</th>
+			<th ng-click="orderBy('isOnline')" style="cursor: pointer;width: 6%">Status</th>
+			<th style="width: 6%">Option</th>
+			<th style="width: 3%"><img src="./clientside/img/blacklistskull.png" alt="skullicon" style="width: 80%"></th>
 
 <!-- 			<th style="width: 20%"></th>
  -->		</tr>
 <!-- 	<! 	<tr ng-repeat="character in characters | orderBy: field : direction">
- -->		<tr ng-repeat="char in characters">
+ -->		<tr ng-repeat="char in characters | orderBy:field:order">
 			<td></td>
 			<td>{{char.name}}</td>
 
@@ -35,6 +37,7 @@
 				
 
 			{{char.vocation}}</td>
+			<td ng-class="checkOn(char)">{{char.isOnline ? "Online" : "Offline"}}</td>
 			<td>
 			<button class="btn btn-danger btn-sm" ng-click="eraseCharacter(char)">Delete</button></td>
 			</tr>

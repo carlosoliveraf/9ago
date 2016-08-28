@@ -10,19 +10,19 @@
 	<div style="background-color: rgba(164,165,165,0.4);width: 100%;margin-top: 5%; border-style: solid;border-radius: 3%;;
     border-width: 1px;
     box-shadow: 10px 10px 5px #888888; height: 20%; display: table; padding: 5%" ng-if="showChars && !character">
-    <table class="table table-hover" style="width: 95%; table-layout: fixed; border-collapse: collapse; margin: auto">
+    <table class="table table-hover" style="cursor: pointer; width: 95%; table-layout: fixed; border-collapse: collapse; margin: auto">
 		<tr>
-			<th style="width: 24%">Name</th>
-			<th style="width: 13%">Level</th>
-			<th style="padding-left: 4%;width: 23%">Vocation</th>
-			<th style="width: 14%">Stamina</th>
-			<th style="width: 14%">Balance</th>
-			<th style="width: 7%">Status</th>
+			<th ng-click="orderBy('name')" style="width: 20%">Name</th>
+			<th ng-click="orderBy('level')" style="width: 13%">Level</th>
+			<th ng-click="orderBy('vocation')" style="padding-left: 4%;width: 23%">Vocation</th>
+			<th ng-click="orderBy('stamina')" style="width: 14%">Stamina</th>
+			<th ng-click="orderBy('balance')" style="width: 14%">Balance</th>
+			<th ng-click="orderBy('isOnline')" style="width: 7%">Status</th>
 
 <!-- 			<th style="width: 20%"></th>
  -->		</tr>
 <!-- 	<! 	<tr ng-repeat="character in characters | orderBy: field : direction">
- -->		<tr ng-click="selectChar(char)" ng-repeat="char in characters | orderBy: 'level' : true">
+ -->		<tr ng-click="selectChar(char)" ng-repeat="char in characters | orderBy:field:order">
 			
 			<td>{{char.name}}</td>
 

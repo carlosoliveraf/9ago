@@ -6,6 +6,7 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
 		$scope.characters = [""];
 		$scope.edition = false;
 		$scope.showChars = false;
+		$scope.onlineChars = [];
 
 		$scope.checkVoc = function(char){
 			if(char.vocation == 'Elite Knight') return 'blueColor bold';
@@ -17,6 +18,40 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
 			if(char.vocation == 'Elder Druid') return 'greenColor bold';
 			if(char.vocation == 'Druid') return 'greenColor';
 		};
+
+		$scope.isOnline = function(){
+
+			do {
+				var name;
+    			var names = [];
+    			var online = $scope.onlineChars;
+    			for(index in $scope.characters){
+					names.push(new String($scope.characters[index].name).valueOf());
+				}
+				    			//console.log(names);
+				    			//console.log(online);
+
+				function checkContain(online) {
+
+					var nameFrmt = name.replace(/[^A-Za-z]/ig, "");
+					var onlineFrmt = online.replace(/[^A-Za-z]/ig, "");
+
+					return (nameFrmt === onlineFrmt );
+				}
+				for(var index in names){
+					name = names[index];
+					var teste = online.some(checkContain);
+					if(teste){
+						$scope.characters[index].isOnline = true;
+						//console.log($scope.characters[index]);
+					}
+				}
+
+
+			} while (!$scope.characters || !$scope.onlineChars);
+
+		};
+
 
 		$scope.checkCharacter = function(oficial){
 			if(oficial){
@@ -31,6 +66,23 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
 		}
 		};
 
+		$scope.checkOn = function(char){
+			if(char.isOnline){ 
+				return 'onlineColor bold'
+			}else{
+				//style for offline
+			};
+			
+
+		};
+
+
+		$scope.orderBy = function(field){
+				$scope.field = field;
+				$scope.order = !$scope.order;
+
+		};
+
 
 	    $scope.checkLogged = function(){
 					if($rootScope.logged){
@@ -43,6 +95,7 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
 	    $scope.checkLogged();
 
 		$scope.findCharacters = function () {
+			$scope.onlineChars = [];
 		//$http.get('http://localhost:5000/blacklist/').then(function (response) {
 		$http.get('https://shrouded-refuge-17729.herokuapp.com/blacklist/').then(function (response) {
 			
@@ -54,6 +107,16 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
 					$scope.characters.push(response.data[index]);
 				};
 			};
+
+			$http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function (response) {
+			$scope.resp = response.data;
+			//console.log(response.data);
+			for(index in $scope.resp){
+				$scope.onlineChars.push(new String($scope.resp[index].name).valueOf());
+			}
+			//console.log($scope.onlineChars);
+			$scope.isOnline();
+		});
 			
 		});
 		};
@@ -89,11 +152,6 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
     		}
 		};
 
-		$scope.editCharacter = function(character){
-			$scope.edition = true;
-		};
-
-		
 
 
 
@@ -145,6 +203,39 @@ angular.module("main").controller("blacklistCtrl", function ($rootScope, $scope,
 
 		}
 
+
+		$scope.isOnline = function(){
+
+			do {
+				var name;
+    			var names = [];
+    			var online = $scope.onlineChars;
+    			for(index in $scope.characters){
+					names.push(new String($scope.characters[index].name).valueOf());
+				}
+				    			//console.log(names);
+				    			//console.log(online);
+
+				function checkContain(online) {
+
+					var nameFrmt = name.replace(/[^A-Za-z]/ig, "");
+					var onlineFrmt = online.replace(/[^A-Za-z]/ig, "");
+
+					return (nameFrmt === onlineFrmt );
+				}
+				for(var index in names){
+					name = names[index];
+					var teste = online.some(checkContain);
+					if(teste){
+						$scope.characters[index].isOnline = true;
+						//console.log($scope.characters[index]);
+					}
+				}
+
+
+			} while (!$scope.characters || !$scope.onlineChars);
+
+		};
 
 
 
