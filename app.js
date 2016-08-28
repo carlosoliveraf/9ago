@@ -131,7 +131,8 @@ app.get('/isonline', function(req, res) {
 
 
 app.get("/images/:image", function(req,res) {
-    db.Imagem.findOne({ "nome": req.param.image },function(err,imagem) {
+
+    db.Imagem.findOne({ "nome": 'img_0001' },function(err,imagem) {
        res.set("Content-Type", "image/jpg");
        res.send( imagem.file );
     });
