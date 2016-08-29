@@ -130,21 +130,30 @@ app.get('/isonline', function(req, res) {
 })
 
 
-app.get("/images/:image", function(req,res) {
+app.get("/seeimage", function(req,res) {
 
-    db.Imagem.findOne({ "nome": 'img_0001' },function(err,imagem) {
+    db.Imagem.findOne({}, {}, { sort: { 'date' : -1 } },function(err,imagem) {
        res.set("Content-Type", "image/jpg");
        res.send( imagem.file );
     });
 });
 
-app.post("/images", function(req,res) {
+// app.get("/images/:image", function(req,res) {
+
+//     db.Imagem.findOne({ "nome": 'img_0001' },function(err,imagem) {
+//        res.set("Content-Type", "image/jpg");
+//        res.send( imagem.file );
+//     });
+// });
+
+
+// app.post("/images", function(req,res) {
    
-	var img = req.body;
-	imageController.save(img, function(resp){
-		res.json(resp);
-	});
-});
+// 	var img = req.body;
+// 	imageController.save(img, function(resp){
+// 		res.json(resp);
+// 	});
+// });
 
 // var tibia = require('tibia-node-crawler');
  

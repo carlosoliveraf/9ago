@@ -45,6 +45,10 @@
         templateUrl: 'templates/newplaceview.html',
         controller: 'huntingplacesCtrl',
         })
+        .when('/lastimageview', {
+        templateUrl: 'templates/lastimageview.html',
+        controller: 'lastimageCtrl',
+        })
         .when('/aboutmeview', {
         templateUrl: 'templates/aboutmeview.html',
         controller: 'aboutmeCtrl',

@@ -71,6 +71,7 @@ db.once('open', function(){
 	var imagemSchema = mongoose.Schema({
 		nome: String,
 		date: Date,
+		owner: String,
 		file: Buffer
 		
 	},{ collection: 'imagem' });
