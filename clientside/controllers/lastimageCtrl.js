@@ -3,9 +3,9 @@ angular.module("main").controller("lastimageCtrl", function ($scope, $http, $roo
 	$scope.image;
 
     $scope.findLastImage = function(){
-    	
-    	//$scope.image = 'http://localhost:5000/seeimage';
-    	$scope.image = 'https://shrouded-refuge-17729.herokuapp.com/seeimage'
+    	var login = $rootScope.login;
+    	//$scope.image = 'http://localhost:5000/seeimage/'+login;
+    	$scope.image = 'https://shrouded-refuge-17729.herokuapp.com/seeimage/'+login;
 		
 
     };

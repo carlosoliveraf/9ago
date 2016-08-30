@@ -22,6 +22,7 @@ angular.module("main").controller("loginCtrl", function ($rootScope, $scope, $ht
 			for(index in $scope.users){
 				if($scope.users[index].username.toUpperCase() == login.toUpperCase() ){
 					if($scope.users[index].password == passw){
+						$rootScope.login = login;
 						$rootScope.logged = true;
 						$rootScope.menu = true;
 						var nameParts = ($scope.users[index].name).split(" ");
