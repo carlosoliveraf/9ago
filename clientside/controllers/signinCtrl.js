@@ -60,6 +60,7 @@ angular.module("main").controller("signinCtrl", function ($rootScope, $scope, $h
 	$scope.signin = function (user) {
     	if(!$scope.userAlreadyTaken && !$scope.emailAlreadyTaken){
     		user.email = criptography.encode(user.email);
+    		
     		user.password = criptography.encode(user.password);
     		user.created_at = new Date();
     		var userString = JSON.stringify(user);
