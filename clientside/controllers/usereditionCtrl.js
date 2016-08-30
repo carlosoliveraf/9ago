@@ -2,8 +2,8 @@ angular.module("main").controller("usereditionCtrl", function ($rootScope, $scop
 	
 		$scope.user = $rootScope.username;
 		$scope.userToEdit;
-
-		$scope.findUserToEdit = function($rootScope.login){
+		var login =	$rootScope.login;
+		$scope.findUserToEdit = function(login){
 			$http.get('https://shrouded-refuge-17729.herokuapp.com/users/'+$rootScope.login).then(function (response) {
 			//$http.get('https://localhost:5000/users/'+$rootScope.login).then(function (response) {
 			$scope.userToEdit = response.data;
