@@ -138,6 +138,14 @@ app.get("/seeimage", function(req,res) {
     });
 });
 
+app.get("/seeimage/:user", function(req,res) {
+	var user = req.param('user');
+    db.Imagem.findOne({'username': user}, {}, { sort: { 'date' : -1 } },function(err,imagem) {
+       res.set("Content-Type", "image/jpg");
+       res.send( imagem.file );
+    });
+});
+
 // app.get("/images/:image", function(req,res) {
 
 //     db.Imagem.findOne({ "nome": 'img_0001' },function(err,imagem) {
