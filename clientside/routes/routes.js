@@ -53,6 +53,10 @@
         templateUrl: 'templates/aboutmeview.html',
         controller: 'aboutmeCtrl',
         })
+        .when('/usereditionview', {
+        templateUrl: 'templates/usereditionview.html',
+        controller: 'usereditionCtrl',
+        })
         .when('/404errorview', {
         templateUrl: 'templates/404errorview.html',
         controller: '404errorCtrl',

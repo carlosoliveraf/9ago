@@ -5,8 +5,10 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 		$scope.charactersStats = false;
 		$scope.characters = [""];
 		$scope.edition = false;
-		$scope.showChars = false;
+		$scope.showChars = true;
 		$scope.onlineChars = [];
+		$scope.field = 'level';
+		$scope.order = true;
 
 		$scope.selectChar = function(char){
 			$scope.showChars = false;
@@ -31,10 +33,10 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 					return 'fullStamina bold';
 				}
 				if(staminaArr[0] >= 40 && staminaArr[0] < 42){
-					return 'bonusStamina bold';
+					return 'bonusStamina';
 				}
 				if(staminaArr[0] < 40){
-					return 'lowStamina bold';
+					return 'lowStamina';
 				}
 
 			}
@@ -177,23 +179,19 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 				};
 			};
 
-			//$http.get('http://localhost:5000/characters/').then(function (response) {
 			
-    // defer the execution of anonymous function for 
-    // 3 seconds and go to next line of code.
-  //  setTimeout(function(){ 
 $http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function (response) {
 			$scope.resp = response.data;
 			//console.log(response.data);
 			for(index in $scope.resp){
 				$scope.onlineChars.push(new String($scope.resp[index].name).valueOf());
 			}
-			//console.log($scope.onlineChars);
+			
 			$scope.isOnline();
 		});
 
         
-   // }, 500);  
+  
 
 
 			
@@ -254,11 +252,6 @@ $http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function
 			$scope.edition = false;
 		};
 
-		$scope.updateLastStamina = function(character){
-
-
-
-		};
 
 		$scope.eraseCharacter = function (character) {
 			var confirmBox = confirm("This character will be deleted from your favorites. Are you sure?");
@@ -285,7 +278,7 @@ $http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function
 
 		$scope.setOrder = function (field) {
 		$scope.field = field;
-		$scope.direction = !$scope.direction;
+		$scope.order = !$scope.order;
 		};
 
 
@@ -310,42 +303,4 @@ $http.get('https://shrouded-refuge-17729.herokuapp.com/isonline/').then(function
 
 
 
-
-	// $scope.itens = itens.data;
-
-	// $scope.pedidos = [];
-	// $scope.total = 0;
-	// $scope.addItem = function (item) {
-	// 	$scope.itens.push(item);
-	// 	delete $scope.item;
-	// };
-
-	// $scope.fazerPedido = function (pedido) {
-	// 	pedido.date = new Date();
-	// 	pedido.subtotal = pedido.quantidade * pedido.item.price;
-	// 	pedido.imposto = impostoService.calcular(pedido.subtotal);
-	// 	$scope.pedidos.push(pedido);
-	// 	delete $scope.pedido;
-	// 	$scope.total = calcularTotal($scope.pedidos);
-	// 	$scope.pedidoForm.$setPristine();
-	// };
-
-	// var calcularTotal = function (pedidos) {
-	// 	var total = 0;
-	// 	pedidos.forEach(function (pedido) {
-	// 		total += pedido.subtotal;
-	// 	});
-	// 	return total + impostoService.calcular(total);
-	// };
-
-	// $scope.cancelarPedido = function (pedido) {
-	// 	var posicao = $scope.pedidos.indexOf(pedido);
-	// 	$scope.pedidos.splice(posicao, 1);
-	// 	$scope.total = calcularTotal($scope.pedidos);
-	// };
-
-	// $scope.setOrdem = function (campo) {
-	// 	$scope.campo = campo;
-	// 	$scope.direcao = !$scope.direcao;
-	// };
 });

@@ -1,12 +1,13 @@
 <div style="width: 60%; display: table; margin: auto; margin-top: 2%">
 	<h4>Character Data:</h4>
 
-	<select ng-model="character" style="margin: 2%; background-color: #ffffff; width: 35%;" class="form-control" name="vocation" ng-options="character.name for character in characters" ng-disabled="edition">
+	<!-- <select ng-model="character" style="margin: 2%; background-color: #ffffff; width: 35%;" class="form-control" name="vocation" ng-options="character.name for character in characters" ng-disabled="edition">
 		<option value="">Select the character</option>
-	</select>
+	</select> -->
 	   <label style="color: red; font-size: 85%" ng-if="characters.length == 0">There is no characters in your account!</label><br/>
 	   <button ng-disabled="characters.length == 0" class="btn btn-info btn-sm" ng-click="showAll()" ng-if="!showChars">Show All</button>
-	   <button ng-disabled="characters.length == 0" class="btn btn-danger btn-sm" ng-click="showAll()" ng-if="showChars">Hide All</button>
+	   <!-- <button ng-disabled="characters.length == 0" class="btn btn-danger btn-sm" ng-click="showAll()" ng-if="showChars">Hide All</button> -->
+	   <label ng-if="showChars" style="font-size: 85%">Click on the character line for edition!</label>
 	<div style="background-color: rgba(164,165,165,0.4);width: 100%;margin-top: 5%; border-style: solid;border-radius: 3%;;
     border-width: 1px;
     box-shadow: 10px 10px 5px #888888; height: 20%; display: table; padding: 5%" ng-if="showChars && !character">
@@ -93,7 +94,7 @@
  -->		<tr>
 			
 			<!-- <td ng-if="!edition" style="margin-top: 0.5%">{{character.stamina}}</td> -->
-			<td><input style="width: 60%" type="text" ng-disabled="!edition" ng-model="character.stamina" name="stamina" placeholder="Stamina" ng-required="true" ng-change="updateLastStamina(character)"/></td>
+			<td><input style="width: 60%" type="text" ng-disabled="!edition" ng-model="character.stamina" name="stamina" placeholder="Stamina" ng-required="true"/></td>
 
 <!-- 			<td ng-if="!edition" style="margin-top: 0.5%">{{character.balance | currency}}</td> -->
 			<td><input style="width: 80%" type="number" ng-disabled="!edition" ng-model="character.balance" name="balance" placeholder="Balance" ng-required="true"/></td>

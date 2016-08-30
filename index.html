@@ -47,7 +47,7 @@
           color: #41F31E;
         }
         .bonusStamina{
-          color: #069AD1;
+          color: #41F31E;
         }
         .lowStamina{
           color: #D17106;
@@ -70,6 +70,7 @@
     <script src="clientside/controllers/lastimageCtrl.js"></script>
     <script src="clientside/controllers/aboutmeCtrl.js"></script>
     <script src="clientside/controllers/404errorCtrl.js"></script>
+    <script src="clientside/controllers/usereditionCtrl.js"></script>
     <script src="clientside/staminaCalc.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -128,8 +129,9 @@
           <div class="dropdown"><a href="#/aboutmeview" class="btn btn-default btn-sm">About me</a>
           </div>
         </li>        
-        <div class="dropdown" style="margin-left: 85%">
+        <div class="dropdown" style="margin-left: 78%">
         <li  style="color: black">Welcome <strong>{{username}}!
+        <a style="color: black; text-decoration: underline;text-decoration: bold" href="#/usereditionview" class="btn btn-sm">Edit User</a>
         <a style="color: black; text-decoration: underline;text-decoration: bold" href="#/" class="btn btn-sm">Logoff</a></strong>
         </li></div>
       </ul>
