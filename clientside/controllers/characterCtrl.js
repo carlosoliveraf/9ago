@@ -87,8 +87,8 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 				}
 				for(var index in names){
 					name = names[index];
-					var teste = online.some(checkContain);
-					if(teste){
+					var testArray = online.some(checkContain);
+					if(testArray){
 						$scope.characters[index].isOnline = true;
 						//console.log($scope.characters[index]);
 					}
@@ -162,7 +162,7 @@ angular.module("main").controller("characterCtrl", function ($rootScope, $scope,
 						}
 																	
 					
-						var abc = staminaCalc.test(minPassed, sta);
+						var abc = staminaCalc.calcTime(minPassed, sta);
 						
 						if(abc[1].toString().length == 1){	
 							abc[1] = "0"+ abc[1];

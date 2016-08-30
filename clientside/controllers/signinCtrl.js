@@ -1,4 +1,4 @@
-angular.module("main").controller("signinCtrl", function ($rootScope, $scope, $http, $routeParams, $location) {
+angular.module("main").controller("signinCtrl", function ($rootScope, $scope, $http, $routeParams, $location, criptography) {
 	
 	$scope.user;
 	$scope.users;
@@ -59,6 +59,7 @@ angular.module("main").controller("signinCtrl", function ($rootScope, $scope, $h
 
 	$scope.signin = function (user) {
     	if(!$scope.userAlreadyTaken && !$scope.emailAlreadyTaken){
+    		user.password = criptography.encode(user.password);
     		user.created_at = new Date();
     		var userString = JSON.stringify(user);
 

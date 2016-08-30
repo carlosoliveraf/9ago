@@ -18,7 +18,8 @@ angular.module("main").controller("loginCtrl", function ($rootScope, $scope, $ht
 		$http.get('https://shrouded-refuge-17729.herokuapp.com/users/').then(function (response) {
 			$scope.users = response.data;
 			var login = params.login;
-			var passw = params.password;
+			var passw = criptography.encode(params.password);
+
 			for(index in $scope.users){
 				if($scope.users[index].username.toUpperCase() == login.toUpperCase() ){
 					if($scope.users[index].password == passw){

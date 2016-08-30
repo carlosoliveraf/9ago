@@ -37,7 +37,7 @@ angular.module("main").service('staminaCalc', function() {
 
 
 
-    this.test = function (x,a) {
+    this.calcTime = function (x,a) {
     	// var t calcula os minutos de jogo que faltam para 40
     	var b = [40,0];
 		var t =x-(minLeftToGreenAFn(a)*3);
