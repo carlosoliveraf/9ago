@@ -1,4 +1,4 @@
-angular.module("main").controller("loginCtrl", function ($rootScope, $scope, $http, $routeParams, $location) {
+angular.module("main").controller("loginCtrl", function ($rootScope, $scope, $http, $routeParams, $location, criptography) {
 	
 	$rootScope.logged = false;
 	$rootScope.menu = false;
