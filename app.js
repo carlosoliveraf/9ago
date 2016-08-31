@@ -7,9 +7,11 @@ var huntingplaceController = require('./controller/huntingplaceCtrl.js');
 var characController = require('./controller/characCtrl.js');
 var blacklistController = require('./controller/blacklistCtrl.js');
 var imageController = require('./controller/imageCtrl.js');
+var mailer = require('./controller/mailer.js');
+
 var db = require('./db_config.js');
 
-
+mailer.teste();
 
 var CronJob = require('cron').CronJob;
 var validator = require('validator');
@@ -28,7 +30,8 @@ var url = 'mongodb://root:mongouser@ds021895.mlab.com:21895/tbamonitor';
 //
 
 
-var findRestaurants = function(db, callback) {
+
+var findAndUpdateCharacters = function(db, callback) {
    var cursor =db.collection('characters').find( );
    cursor.each(function(err, doc) {
       assert.equal(err, null);
@@ -52,7 +55,7 @@ var findRestaurants = function(db, callback) {
    });
 };
 
-var findRestaurantsBlack = function(db, callback) {
+var findAndUpdateBlackList = function(db, callback) {
    var cursor =db.collection('blacklists').find( );
    cursor.each(function(err, doc) {
       assert.equal(err, null);
@@ -81,14 +84,14 @@ new CronJob('* * * *', function() {
 
 	MongoClient.connect(url, function(err, db) {
 	assert.equal(null, err);
-  	findRestaurants(db, function() {
+  	findAndUpdateCharacters(db, function() {
     db.close();
   	});
 	});
 
 	MongoClient.connect(url, function(err, db) {
 	assert.equal(null, err);
-  	findRestaurantsBlack(db, function() {
+  	findAndUpdateBlackList(db, function() {
     db.close();
   	});
 	});
@@ -128,6 +131,13 @@ app.get('/isonline', function(req, res) {
   }
 });
 })
+
+app.post('/welcome', function (req, res) {
+
+	var user = req.body;
+	mailer.welcomeMail(user);
+	res.send("email sent!");
+});
 
 
 app.get("/seeimage", function(req,res) {

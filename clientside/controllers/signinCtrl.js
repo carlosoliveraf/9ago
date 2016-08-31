@@ -64,7 +64,7 @@ angular.module("main").controller("signinCtrl", function ($rootScope, $scope, $h
     		user.password = criptography.encode(user.password);
     		user.created_at = new Date();
     		var userString = JSON.stringify(user);
-
+    		var welcomeMail = $http.post('https://shrouded-refuge-17729.herokuapp.com/welcome', user);
 			//var res = $http.post('http://localhost:5000/users', user);
 			var res = $http.post('https://shrouded-refuge-17729.herokuapp.com/users', user);
 			
