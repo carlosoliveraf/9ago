@@ -1,9 +1,9 @@
 var db = require('../db_config.js');
 
-exports.getImagens = function(callback) {
+exports.getImages = function(callback) {
 
-   Imagem.find().exec(function(err, imagens){
-      return callback(imagens);
+   Image.find().exec(function(err, images){
+      return callback(images);
    });
 };
 
@@ -29,16 +29,16 @@ exports.getImagens = function(callback) {
 
 // };
 
-exports.save = function(imagem, callback){
+exports.save = function(image, callback){
 
-	new db.Imagem(imagem).save(function(error, imagemSalva) {
+	new db.Image(image).save(function(error, imageSaved) {
 
 		if(error) {
 
 			callback({error: 'Não foi possivel salvar o usuario'});
 		} else {
 
-			callback(imagemSalva);
+			callback(imagemSaved);
 		}
 	});
 };

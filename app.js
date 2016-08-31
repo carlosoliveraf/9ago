@@ -142,17 +142,17 @@ app.post('/welcome', function (req, res) {
 
 app.get("/seeimage", function(req,res) {
 
-    db.Imagem.findOne({}, {}, { sort: { 'date' : -1 } },function(err,imagem) {
+    db.Image.findOne({}, {}, { sort: { 'date' : -1 } },function(err,image) {
        res.set("Content-Type", "image/jpg");
-       res.send( imagem.file );
+       res.send( image.file );
     });
 });
 
 app.get("/seeimage/:user", function(req,res) {
 	var user = req.param('user');
-    db.Imagem.findOne({'username': user}, {}, { sort: { 'date' : -1 } },function(err,imagem) {
+    db.Image.findOne({'username': user}, {}, { sort: { 'date' : -1 } },function(err,image) {
        res.set("Content-Type", "image/jpg");
-       res.send( imagem.file );
+       res.send( image.file );
     });
 });
 
