@@ -9,6 +9,7 @@ angular.module("main").controller("404errorCtrl", function ($rootScope, $scope, 
 					}
 	        };
 	        
+	        
 	        $scope.checkLogged();
 		
 });
