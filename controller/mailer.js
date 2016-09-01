@@ -49,5 +49,19 @@ exports.welcomeMail = function(user){
 };
   send(mail);
 
+};
+
+exports.passwordForgotMail = function(user){
+  var mail = {
+  from: 'tibiacharactermonitor@gmail.com',
+  to: user.email,
+  subject: 'Tibia Character Monitor - Password Reminder',
+  html: 'Hello '+user.name+'! We received a password reminder request.<br/> Your username is: '+user.username+' <br/> And your password is: '+user.password+'.'
+};
+  send(mail);
 
 };
+
+
+
+

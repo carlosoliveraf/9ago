@@ -139,6 +139,13 @@ app.post('/welcome', function (req, res) {
 	res.send("email sent!");
 });
 
+app.post('/forgotpasswordmail', function (req, res) {
+
+	var user = req.body;
+	mailer.passwordForgotMail(user);
+	res.send("email sent!");
+});
+
 
 app.get("/seeimage", function(req,res) {
 

@@ -57,6 +57,10 @@
         templateUrl: 'templates/usereditionview.html',
         controller: 'usereditionCtrl',
         })
+        .when('/passwordrecoverview', {
+        templateUrl: 'templates/passwordrecoverview.html',
+        controller: 'pwdrecoverCtrl',
+        })
         .when('/404errorview', {
         templateUrl: 'templates/404errorview.html',
         controller: '404errorCtrl',
