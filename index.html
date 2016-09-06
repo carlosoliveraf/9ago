@@ -52,6 +52,9 @@
         .lowStamina{
           color: #D17106;
         }
+        .blackBorder{
+          border-color: black;
+        }
 
         </style>
 </head>
@@ -82,15 +85,14 @@
 
   <!--   <section ng-view=""></section> -->
   
-	<div id="title" style="width: 100%">
-  <div style="text-align: center; margin-top: 3%"><p style="font-family: 'Courier New', Courier, monospace; font-size: 25px"><strong>Tibia Character Monitor</strong></p></div>
+	<div id="title" style="width: 100%; background-color: black;box-shadow: 0px 8px 5px #888888;">
+  <div style="text-align: center; padding-top: 3%;background-color: black; color: white"><p style="font-family: 'Courier New', Courier, monospace; font-size: 25px; color: white"><strong>Tibia Character Monitor</strong></p></div>
 
-	</div>
-
+	
     
     
-    <div id="menu" ng-if="menu">
-      <ul style="color: white; padding: 1%" class="nav nav-tabs">
+    <div id="menu" ng-if="menu" style="background-color: black">
+      <ul style="color: white; padding: 1%" class="nav nav-tabs blackBorder">
         <li class="marginPerson">
           <div class="dropdown" ><a style="width: 110px" href="#/home" class="btn btn-default btn-sm">Home</a>
           </div>
@@ -133,12 +135,13 @@
           </div>
         </li>        
         <div class="dropdown" style="margin-left: 80%">
-        <li  style="color: black">Welcome <strong>{{username}}!
-        <a style="color: black; text-decoration: underline;text-decoration: bold; font-size: 90%; margin-left: 4%;margin-right: 2%" href="#/usereditionview">Edit User</a>
-        <a style="color: black; text-decoration: underline;text-decoration: bold;font-size: 90%; margin-left: 2%" href="#/">Logoff</a></strong>
+        <li  style="color: white">Welcome <strong>{{username}}!
+        <a style="color: white; text-decoration: underline;text-decoration: bold; font-size: 90%; margin-left: 4%;margin-right: 2%" href="#/usereditionview">Edit User</a>
+        <a style="color: white; text-decoration: underline;text-decoration: bold;font-size: 90%; margin-left: 2%" href="#/">Logoff</a></strong>
         </li></div>
       </ul>
-    </div>
+    </div></div>
+
     <div id="view" ng-view></div>
 </body>
 </html>
