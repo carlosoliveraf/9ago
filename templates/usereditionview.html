@@ -13,7 +13,7 @@
    <input style="margin-bottom: 0.5%; width: 40%; margin-right: auto; margin-left: auto;" type="text" style="" class="form-control" ng-model="user.email" name="email" placeholder="Email" ng-required="true" ng-change="checkEmail(user)" ng-model-options="{ updateOn: 'default blur', debounce: { default: 600, blur: 0 } }"/>
    <label style="color: red; font-size: 85%" ng-if="emailAlreadyTaken">This email is already registered!</label><br/>
 
-      <label>Username:*</label>
+      <label>Username:</label>
    <input style="margin-bottom: 0.5%;width: 30%; margin-right: auto; margin-left: auto;" ng-disabled=true type="text" style="" class="form-control" ng-model="userToEdit.username" name="username" placeholder="Username" ng-required="true"/>
 	<br/>
 	 <label>Current Password:*</label>
@@ -39,7 +39,7 @@
  
      <div style="text-align: center">
      <br/>
-            <button ng-disabled="userAlreadyTaken || emailAlreadyTaken || difPasswords || !signIn.$valid" ng-click="signin(user)" class="btn btn-default" style="margin: auto;width: 30%; display: inline-block; margin-bottom: 5%;margin-top: 2%" type="button" data-toggle="dropdown">Save Changes
+            <button ng-disabled="userAlreadyTaken || emailAlreadyTaken || difPasswords || !signIn.$valid" ng-click="update(user)" class="btn btn-default" style="margin: auto;width: 30%; display: inline-block; margin-bottom: 5%;margin-top: 2%" type="button" data-toggle="dropdown">Save Changes
             </button>
             <a style="margin: auto;width: 30%; display: inline-block; margin-bottom: 5%;margin-top: 2%; color: black;" class="btn btn-default" href="#/home">Back</a>
            
