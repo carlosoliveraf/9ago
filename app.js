@@ -163,7 +163,7 @@ app.get("/seeimage/:user", function(req,res) {
        res.set("Content-Type", "image/jpg");
        res.send( image.file );
    }else{
-   		res.send("No records yet!");
+   		res.send(null);
    }
     });
 });
