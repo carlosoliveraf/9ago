@@ -79,6 +79,7 @@ db.once('open', function(){
 	exports.Image = mongoose.model('image', imageSchema);
 
 	var postSchema = mongoose.Schema({
+		title: String,
 		date: Date,
 		content: String,
 		tags: [String],
