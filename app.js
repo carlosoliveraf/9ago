@@ -159,8 +159,12 @@ app.get("/seeimage", function(req,res) {
 app.get("/seeimage/:user", function(req,res) {
 	var user = req.param('user');
     db.Image.findOne({'username': user}, {}, { sort: { 'date' : -1 } },function(err,image) {
+    	if(image){
        res.set("Content-Type", "image/jpg");
        res.send( image.file );
+   }else{
+   		res.send("No records yet!");
+   }
     });
 });
 
