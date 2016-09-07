@@ -7,6 +7,7 @@ var huntingplaceController = require('./controller/huntingplaceCtrl.js');
 var characController = require('./controller/characCtrl.js');
 var blacklistController = require('./controller/blacklistCtrl.js');
 var imageController = require('./controller/imageCtrl.js');
+var postController = require('./controller/postCtrl.js');
 var mailer = require('./controller/mailer.js');
 
 var db = require('./db_config.js');
@@ -291,6 +292,27 @@ app.get('/characters', function (req, res) {
 	//res.json(itens);
 });
 
+app.get('/posts', function (req, res) {
+	//res.status(500).end();
+	
+	postController.list(function(resp){
+		res.json(resp);
+	});
+
+
+
+	//res.json(itens);
+});
+
+app.post('/posts', function (req, res) {
+	var post = req.body;
+	postController.save(post, function(resp){
+		res.json(resp);
+	});
+
+
+});
+
 app.get('/blacklist', function (req, res) {
 	//res.status(500).end();
 	
@@ -301,6 +323,8 @@ app.get('/blacklist', function (req, res) {
 
 	//res.json(itens);
 });
+
+
 
 app.post('/blacklist', function (req, res) {
 

@@ -78,6 +78,17 @@ db.once('open', function(){
 
 	exports.Image = mongoose.model('image', imageSchema);
 
+	var postSchema = mongoose.Schema({
+		date: Date,
+		content: String,
+		tags: [String],
+		category: String,
+		username: String
+		
+	},{ collection: 'posts' });
+
+	exports.Post = mongoose.model('post', postSchema);
+
 });
 
 

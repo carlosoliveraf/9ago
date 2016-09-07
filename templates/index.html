@@ -1,1 +1,23 @@
-<h3 style="color: white">Welcome to TCM!<h3>
+<h3 style="color: black">What's new!?<h3>
+<div style="background-color: wheat; width: 50%; margin: auto;padding: 2%">
+outside
+	<div style="background-color: grey; width: 100%; margin: auto; padding: 1%">
+	<div style="background-color: white; width: 90%; margin: auto; padding: 1%" ng-repeat="post in posts">
+				<label>{{post.date}}</label>
+
+		{{post.content}}
+				<label>Category:</label>
+		{{post.category}}
+		<br/>
+
+		<label style="margin-right: 1%">Tags: </label>
+		<div style="margin-right: 1%" ng-repeat="tag in post.tags">
+			<label>{{tag}} </label>
+		</div><br/>
+		<div>
+		<label>Post by: {{post.username}}</label>
+		</div>
+		</div>
+	</div>
+
+</div>
