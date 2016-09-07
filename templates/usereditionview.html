@@ -14,7 +14,7 @@
    <label style="color: red; font-size: 85%" ng-if="emailAlreadyTaken">This email is already registered!</label><br/>
 
       <label>Username:*</label>
-   <input style="margin-bottom: 0.5%;width: 30%; margin-right: auto; margin-left: auto;" ng-disabled=true type="text" style="" class="form-control" ng-model="user.username" name="username" placeholder="Username" ng-required="true"  ng-change="checkLogin(user)" ng-model-options="{ updateOn: 'default blur', debounce: { default: 600, blur: 0 } }"/>
+   <input style="margin-bottom: 0.5%;width: 30%; margin-right: auto; margin-left: auto;" ng-disabled=true type="text" style="" class="form-control" ng-model="userToEdit.username" name="username" placeholder="Username" ng-required="true"/>
 	<br/>
 	 <label>Current Password:*</label>
    <input style="margin-bottom: 0.5%;width: 30%; margin-right: auto; margin-left: auto;" type="password" style="" class="form-control" ng-model="user.oldpassword" name="Password" placeholder="Username" ng-required="true"  ng-change="checkLogin(user)" ng-model-options="{ updateOn: 'default blur', debounce: { default: 600, blur: 0 } }"/>

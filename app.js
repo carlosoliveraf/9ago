@@ -379,6 +379,7 @@ app.get('/characters/:id', function (req, res) {
 	// res.json(itens);
 });
 
+
 app.get('/users', function (req, res) {
 	//res.status(500).end();
 	
@@ -390,6 +391,23 @@ app.get('/users', function (req, res) {
 
 	//res.json(itens);
 });
+
+
+
+app.get('/users/:username', function (req, res) {
+
+	var username = req.param('username');
+	userController.userByName(username, function(resp){
+		res.json(resp);
+
+	});
+
+
+	//res.status(500).end();
+	// res.json(itens);
+});
+
+
 
 app.get('/users/:id', function (req, res) {
 

@@ -28,6 +28,19 @@ exports.user = function(id, callback) {
 	});
 };
 
+exports.userByName = function(username, callback) {
+
+	db.User.findOne({ 'username': username }, function (err, user) {
+		
+		if(!err){
+			
+  				callback(user);
+		}else{
+			callback({error: 'Não foi possivel retornar o usuario'});
+		}
+	});
+};
+
 exports.save = function(user, callback){
 
 	new db.User(user).save(function(error, user) {
