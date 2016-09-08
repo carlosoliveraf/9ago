@@ -12,7 +12,6 @@ var mailer = require('./controller/mailer.js');
 
 var db = require('./db_config.js');
 
-mailer.teste();
 
 var CronJob = require('cron').CronJob;
 var validator = require('validator');

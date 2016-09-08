@@ -77,6 +77,7 @@
     <script src="clientside/controllers/lastimageCtrl.js"></script>
     <script src="clientside/controllers/aboutmeCtrl.js"></script>
     <script src="clientside/controllers/404errorCtrl.js"></script>
+    <script src="clientside/controllers/adminCtrl.js"></script>
     <script src="clientside/controllers/usereditionCtrl.js"></script>
     <script src="clientside/staminaCalc.js"></script>    
     <script src="clientside/criptography.js"></script>
@@ -136,7 +137,11 @@
          <li class="marginPerson">
           <div class="dropdown"><a href="#/aboutmeview" style="width: 110px" class="btn btn-default btn-sm">About me</a>
           </div>
-        </li>        
+        </li>   
+        <li class="marginPerson" ng-if="isAdmin">
+          <div class="dropdown"><a href="#/adminview" style="width: 110px" class="btn btn-default btn-sm">Admin Tools</a>
+          </div>
+        </li>       
         <div class="dropdown" style="margin-left: 80%">
         <li  style="color: white">Welcome <strong>{{username}}!
         <a style="color: white; text-decoration: underline;text-decoration: bold; font-size: 90%; margin-left: 4%;margin-right: 2%" href="#/usereditionview">Edit User</a>

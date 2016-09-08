@@ -2,10 +2,11 @@ angular.module("main").controller("loginCtrl", function ($rootScope, $scope, $ht
 	
 	$rootScope.logged = false;
 	$rootScope.menu = false;
-	$scope.users = {};
+	$scope.user;
     $scope.params = {};
     $scope.showPassword = false;
     $scope.error = false;
+    $rootScope.isAdmin = false;
 
     $scope.toggleShowPassword = function() {
         $scope.showPassword = !$scope.showPassword;
@@ -15,18 +16,20 @@ angular.module("main").controller("loginCtrl", function ($rootScope, $scope, $ht
 
     $scope.login = function (params) {
 		//$http.get('http://localhost:5000/users/').then(function (response) {
-		$http.get('https://shrouded-refuge-17729.herokuapp.com/users/').then(function (response) {
-			$scope.users = response.data;
+		$http.get('https://shrouded-refuge-17729.herokuapp.com/users/'+params.login).then(function (response) {
+			$scope.user = response.data;
 			var login = params.login;
 			var passw = criptography.encode(params.password);
 
-			for(index in $scope.users){
-				if($scope.users[index].username.toUpperCase() == login.toUpperCase() ){
-					if($scope.users[index].password == passw){
+				if($scope.user.username.toUpperCase() == login.toUpperCase() ){
+					if($scope.user.password == passw){
 						$rootScope.login = login;
 						$rootScope.logged = true;
 						$rootScope.menu = true;
-						var nameParts = ($scope.users[index].name).split(" ");
+						if($scope.user.isAdmin){
+							$rootScope.isAdmin = true;
+						}
+						var nameParts = ($scope.user.name).split(" ");
 						$rootScope.username = nameParts[0];
 						$scope.error = false;
 						return $location.path('/home');
@@ -34,7 +37,7 @@ angular.module("main").controller("loginCtrl", function ($rootScope, $scope, $ht
 					}
 				}
 
-			};
+			
 			$scope.error = true;
 
 		});

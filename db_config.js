@@ -15,6 +15,7 @@ db.once('open', function(){
 		email: String,
 		username: String,
 		password: String,
+		isAdmin: Boolean,
 		created_at: Date
 	});
 

@@ -1,0 +1,24 @@
+<div id="painel" style="background-color: red; width: 95%; display: table; padding: 1%; margin: auto; margin-top: 3%">
+<h5>Administrator Tools</h5>
+
+<div style="background-color: white; width: 30%; display: inline-block; padding: 2%"><h4>Tools</h4>
+
+Give admin privilegies
+<br/>
+Delete Users
+<br/>
+Page Statistics
+<br/>
+
+
+</div>
+<div style="background-color: wheat; width: 67%; float: right; padding: 2%"><h4>Post news!</h4>
+	<input style="width: 50%; " type="text" style="" class="form-control" ng-model="userToEdit.username" name="title" placeholder="Title"/>
+	​<textarea id="txtArea" class="form-control" rows="8" cols="70" style="display: block;" placeholder="Post content..."></textarea>
+	 <button ng-disabled="post.content" ng-click="post(post)" class="btn btn-default" style="width: 18%; margin-bottom: 3%;margin-top: 2%; display: inline-block;" type="button" data-toggle="dropdown">Submit</button>
+	 <button ng-disabled="post.content" ng-click="clear(post)" class="btn btn-default" style="width: 18%; margin-bottom: 3%;margin-top: 2%; display: inline-block;" type="button" data-toggle="dropdown">Clear</button>
+
+
+</div>
+
+</div>

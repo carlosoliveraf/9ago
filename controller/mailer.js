@@ -34,10 +34,6 @@ var send = function(mail){
  });
 }
 
-exports.teste = function(){
-  console.log("teste");
-
-};
 
 
 exports.welcomeMail = function(user){
